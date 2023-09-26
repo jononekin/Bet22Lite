@@ -362,6 +362,12 @@ public class DataAccess  {
 			reg1.addApustuAnitza(apA1);
 			
 			
+			
+			
+			
+			
+			
+			
 			Transaction t1 = new Transaction(reg1, apA1.getBalioa(), new Date(), "ApustuaEgin");
 			Transaction t3 = new Transaction(reg2, apA4.getBalioa(), new Date(), "ApustuaEgin");
 			Transaction t4 = new Transaction(reg3, apA5.getBalioa(), new Date(), "ApustuaEgin");
@@ -385,6 +391,10 @@ public class DataAccess  {
 			reg2.addTransaction(t10);
 			reg3.addTransaction(t11);
 			reg3.addTransaction(t12);
+			
+			
+			
+			
 			
 			team1.addEvent(ev1);
 			team2.addEvent(ev1);
