@@ -1,0 +1,34 @@
+
+@dataAccess.DataAccess#findTeam(Ldomain/Registered;)Ldomain/Team;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.java– –("1*À
+1
+—! —(#Ÿœ
+
+—; —(J
+%0java.lang.String"1domain.Registered#getUsername()Ljava/lang/String;*4
+
+__unknown_file (
+
+udomain.Registered2getUsername()S
+Q
+
+— —(L
+userdomain.Registered"__id*"
+
+__unknown_file (
+""”‘
+
+˜	 ˜(
+%1domain.Team"*domain.Registered#getTaldea()Ldomain/Team;*7
+
+__unknown_file (
+
+userdomain.Registered2getTaldea()"!
+
+˜ ˜(
+
+%1domain.Team:$
+
+– –("
+udomain.RegisteredB
+dataAccess.DataAccessH

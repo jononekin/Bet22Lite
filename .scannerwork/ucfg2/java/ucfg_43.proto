@@ -1,0 +1,43 @@
+
+BdataAccess.DataAccess#getEventsTeam(Ldomain/Team;)Ljava/util/List;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.javaı ı(!"1*¤
+1
+ş	 ş(
+
+ş ş(,
+%0java.lang.String"(domain.Team#getIzena()Ljava/lang/String;*1
+
+__unknown_file (
+
+teamdomain.Team2
+getIzena()J
+H
+
+ş ş(.
+tdomain.Team"__id*"
+
+__unknown_file (
+""Š
+
+€	 €	($
+%1java.lang.String"(domain.Team#getIzena()Ljava/lang/String;*.
+
+__unknown_file (
+
+tdomain.Team2
+getIzena()Š
+
+	 	($
+%2java.lang.String"(domain.Team#getIzena()Ljava/lang/String;*.
+
+__unknown_file (
+
+tdomain.Team2
+getIzena()"
+
+‚	 ‚	(
+"":!
+
+ı" ı(+
+teamdomain.TeamB
+dataAccess.DataAccessH

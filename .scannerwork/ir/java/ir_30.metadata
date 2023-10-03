@@ -1,0 +1,19 @@
+dataAccess.DataAccess#ApustuaIrabazi(Ldomain/ApustuAnitza;)V
+java.util.Date#<init>()V
+domain.Transaction#<init>(Ldomain/Registered;Ljava/lang/Double;Ljava/util/Date;Ljava/lang/String;)V
+java.util.Date#instance-init#
+domain.Transaction#instance-init#
+==
+getUser domain.ApustuAnitza#getUser()Ldomain/Registered;
+getApustuAnitzaNumber domain.ApustuAnitza#getApustuAnitzaNumber()Ljava/lang/Integer;
+getUsername domain.Registered#getUsername()Ljava/lang/String;
+getZenbat domain.Registered#getZenbat()I
+setIrabazitakoa domain.Registered#setIrabazitakoa(Ljava/lang/Double;)V
+updateDiruKontua domain.Registered#updateDiruKontua(Ljava/lang/Double;)V
+getBalioa domain.ApustuAnitza#getBalioa()Ljava/lang/Double;
+setZenbat domain.Registered#setZenbat(I)V
+setEgoera domain.ApustuAnitza#setEgoera(Ljava/lang/String;)V
+getIrabazitakoa domain.Registered#getIrabazitakoa()Ljava/lang/Double;
+getApustuak domain.ApustuAnitza#getApustuak()Ljava/util/Vector;
+getQuote domain.Quote#getQuote()Ljava/lang/Double;
+getKuota domain.Apustua#getKuota()Ldomain/Quote;
