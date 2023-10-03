@@ -1,0 +1,9 @@
+dataAccess.DataAccess#DiruaSartu(Ldomain/Registered;Ljava/lang/Double;Ljava/util/Date;Ljava/lang/String;)V
+domain.Transaction#<init>(Ldomain/Registered;Ljava/lang/Double;Ljava/util/Date;Ljava/lang/String;)V
+domain.Transaction#instance-init#
+==
+getUsername domain.Registered#getUsername()Ljava/lang/String;
+println java.io.PrintStream#println(Ljava/lang/String;)V
+getMota domain.Transaction#getMota()Ljava/lang/String;
+updateDiruKontua domain.Registered#updateDiruKontua(Ljava/lang/Double;)V
+addTransaction domain.Registered#addTransaction(Ldomain/Transaction;)V

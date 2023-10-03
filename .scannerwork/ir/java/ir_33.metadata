@@ -1,0 +1,5 @@
+dataAccess.DataAccess#saldoaBistaratu(Ldomain/Registered;)Ljava/lang/String;
+java.lang.Double#toString()Ljava/lang/String;
+==
+getUsername domain.Registered#getUsername()Ljava/lang/String;
+getDirukop domain.Registered#getDirukop()Ljava/lang/Double;

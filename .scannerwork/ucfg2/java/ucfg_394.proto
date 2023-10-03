@@ -1,0 +1,118 @@
+
+.domain.Registered#toString()Ljava/lang/String;Y
+M/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/domain/Registered.java© ©("3*Œ
+2
+«
+ «(œ™
+
+«
+ «(
+%1java.lang.String"1domain.Registered#getUsername()Ljava/lang/String;*1
+
+__unknown_file (
+domain.Registered2getUsername()m
+k
+
+«
+ «("
+%2java.lang.String"__concat*&
+
+«
+ «(
+
+%1java.lang.String*
+
+« «("
+ n
+l
+
+«
+ «(0
+%3java.lang.String"__concat*&
+
+«
+ «("
+
+%2java.lang.String*
+
+«% «(0
+""n
+l
+
+«
+ «(6
+%4java.lang.String"__concat*&
+
+«
+ «(0
+
+%3java.lang.String*
+
+«2 «(6
+: q
+o
+
+«9 «(J
+%5java.lang.Double"__id*C
+
+__unknown_file ('*%
+domain.Registered"
+irabazitakoa€
+~
+
+«
+ «(J
+%6java.lang.String"__concat*&
+
+«
+ «(6
+
+%4java.lang.String*&
+
+«9 «(J
+
+%5java.lang.Doubleo
+m
+
+«
+ «(P
+%7java.lang.String"__concat*&
+
+«
+ «(J
+
+%6java.lang.String*
+
+«M «(P
+ï¿½"&
+
+« «(Q
+
+%7java.lang.String*‚
+3
+ª ª(	i
+g
+
+ª ª(
+%0java.lang.String"__id*;
+
+__unknown_file (*
+domain.Registered"
+mode*
+2
+1*Ö
+1
+­
+ ­(œ™
+
+­
+ ­(
+%8java.lang.String"1domain.Registered#getUsername()Ljava/lang/String;*1
+
+__unknown_file (
+domain.Registered2getUsername()"&
+
+­ ­(
+
+%8java.lang.StringB
+domain.RegisteredH

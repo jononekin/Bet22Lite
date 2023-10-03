@@ -1,0 +1,3 @@
+dataAccess.DataAccess#findUser(Ldomain/Registered;)Ldomain/Registered;
+==
+getUsername domain.Registered#getUsername()Ljava/lang/String;

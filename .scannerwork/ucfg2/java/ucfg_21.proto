@@ -1,0 +1,34 @@
+
+LdataAccess.DataAccess#findQuestionFromQuote(Ldomain/Quote;)Ldomain/Question;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.java† †(&"1*Ω
+1
+° °(ùö
+
+°# °(5
+%0java.lang.Integer"0domain.Quote#getQuoteNumber()Ljava/lang/Integer;*/
+
+__unknown_file (
+
+qdomain.Quote2getQuoteNumber()M
+K
+
+° °(7
+quodomain.Quote"__id*"
+
+__unknown_file (
+""ïí
+
+¢	 ¢(
+%1domain.Question"+domain.Quote#getQuestion()Ldomain/Question;*1
+
+__unknown_file (
+
+quodomain.Quote2getQuestion()"%
+
+¢ ¢(
+
+%1domain.Question:
+
+†' †(.
+qdomain.QuoteB
+dataAccess.DataAccessH

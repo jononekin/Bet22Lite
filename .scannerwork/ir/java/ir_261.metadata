@@ -1,0 +1,14 @@
+domain.TeamRenderer#getListCellRendererComponent(Ljavax/swing/JList;Ldomain/Team;IZZ)Ljava/awt/Component;
+javax.swing.ImageIcon#<init>(Ljava/awt/Image;)V
+javax.swing.ImageIcon#<init>(Ljava/lang/String;)V
+javax.swing.ImageIcon#instance-init#
+==
+getImage javax.swing.ImageIcon#getImage()Ljava/awt/Image;
+setText javax.swing.JLabel#setText(Ljava/lang/String;)V
+getScaledInstance java.awt.Image#getScaledInstance(III)Ljava/awt/Image;
+setIcon javax.swing.JLabel#setIcon(Ljavax/swing/Icon;)V
+getSelectionBackground javax.swing.JList#getSelectionBackground()Ljava/awt/Color;
+getSelectionForeground javax.swing.JList#getSelectionForeground()Ljava/awt/Color;
+getIzena domain.Team#getIzena()Ljava/lang/String;
+setBackground javax.swing.JComponent#setBackground(Ljava/awt/Color;)V
+setForeground javax.swing.JComponent#setForeground(Ljava/awt/Color;)V

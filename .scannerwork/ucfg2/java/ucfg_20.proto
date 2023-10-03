@@ -1,0 +1,50 @@
+
+JdataAccess.DataAccess#findEventFromApustua(Ldomain/Apustua;)Ldomain/Event;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.javaõ õ(""1*‰
+1
+ú ú(•¢
+
+ú' ú(;
+%0java.lang.Integer"4domain.Apustua#getApostuaNumber()Ljava/lang/Integer;*1
+
+__unknown_file (
+
+qdomain.Apustua2getApostuaNumber()O
+M
+
+ú ú(=
+quodomain.Apustua"__id*"
+
+__unknown_file (
+""çä
+
+ù	 ù(
+%1domain.Quote"'domain.Apustua#getKuota()Ldomain/Quote;*3
+
+__unknown_file (
+
+quodomain.Apustua2
+getKuota()îë
+
+ù	 ù(%
+%2domain.Question"+domain.Quote#getQuestion()Ldomain/Question;*0
+
+__unknown_file (
+
+%1domain.Quote2getQuestion()éã
+
+ù	 ù(0
+%3domain.Event"(domain.Question#getEvent()Ldomain/Event;*3
+
+__unknown_file (
+
+%2domain.Question2
+getEvent()""
+
+ù ù(1
+
+%3domain.Event:!
+
+õ# õ(,
+qdomain.ApustuaB
+dataAccess.DataAccessH

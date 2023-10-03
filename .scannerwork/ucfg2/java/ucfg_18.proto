@@ -1,0 +1,42 @@
+
+=dataAccess.DataAccess#findEvent(Ldomain/Quote;)Ldomain/Event;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.javaë ë("1*À
+1
+í í(ùö
+
+í# í(5
+%0java.lang.Integer"0domain.Quote#getQuoteNumber()Ljava/lang/Integer;*/
+
+__unknown_file (
+
+qdomain.Quote2getQuoteNumber()M
+K
+
+í í(7
+quodomain.Quote"__id*"
+
+__unknown_file (
+""ïí
+
+ì	 ì(
+%1domain.Question"+domain.Quote#getQuestion()Ldomain/Question;*1
+
+__unknown_file (
+
+quodomain.Quote2getQuestion()éã
+
+ì	 ì(%
+%2domain.Event"(domain.Question#getEvent()Ldomain/Event;*3
+
+__unknown_file (
+
+%1domain.Question2
+getEvent()""
+
+ì ì(&
+
+%2domain.Event:
+
+ë ë(
+qdomain.QuoteB
+dataAccess.DataAccessH

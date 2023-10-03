@@ -1,0 +1,3 @@
+dataAccess.DataAccess#getEventsTeam(Ldomain/Team;)Ljava/util/List;
+==
+getIzena domain.Team#getIzena()Ljava/lang/String;

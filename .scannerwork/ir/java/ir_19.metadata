@@ -1,0 +1,4 @@
+dataAccess.DataAccess#findTeam(Ldomain/Registered;)Ldomain/Team;
+==
+getUsername domain.Registered#getUsername()Ljava/lang/String;
+getTaldea domain.Registered#getTaldea()Ldomain/Team;
