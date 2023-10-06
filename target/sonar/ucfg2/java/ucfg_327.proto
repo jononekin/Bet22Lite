@@ -1,0 +1,59 @@
+
+)domain.Quote#toString()Ljava/lang/String;R
+H/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/domain/Quote.javaY Y("1*Ÿ
+1Z	 Z(f
+d
+Z Z(
+%0java.lang.String"__id*:
+
+__unknown_file (*
+domain.Quote"
+
+forecastp
+n
+Z	 Z(
+%1java.lang.String"__concat*
+Z	 Z(
+
+Forecast: *$
+Z Z(
+
+%0java.lang.Stringo
+m
+Z	 Z(*
+%2java.lang.String"__concat*$
+Z	 Z(
+
+%1java.lang.String*
+Z Z(*
+	; Quote: c
+a
+Z; Z(@
+%3java.lang.Double"__id*7
+
+__unknown_file (*
+domain.Quote"
+balio½
+º
+Z+ Z(A
+%4java.lang.String".java.lang.Double#toString(D)Ljava/lang/String;*0
+
+__unknown_file ("
+java.lang.Double*4
+
+__unknown_file (
+
+%3java.lang.Doublez
+x
+Z	 Z(A
+%5java.lang.String"__concat*$
+Z	 Z(*
+
+%2java.lang.String*$
+Z+ Z(A
+
+%4java.lang.String"$
+Z Z(B
+
+%5java.lang.StringB
+domain.QuoteH
