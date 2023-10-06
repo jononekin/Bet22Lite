@@ -1,0 +1,684 @@
+
+6dataAccess.DataAccess#gertaeraEzabatu(Ldomain/Event;)Z]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.java— —("22*é
+13
+· ·(sq
+
+· ·( 
+
+%13int"java.util.List#size()I*7
+
+__unknown_file (
+
+listQUOjava.util.List2size()*
+12
+1*„
+14
+ﬁ ﬁ( z
+x
+
+ﬁ ﬁ( %
+%8javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+db¨©
+ﬁ ﬁ(à"
+%9javax.persistence.TypedQuery"njavax.persistence.EntityManager#createQuery(Ljava/lang/String;Ljava/lang/Class;)Ljavax/persistence/TypedQuery;*C
+
+__unknown_file ('
+%
+%8javax.persistence.EntityManager*k
+
+__unknown_file (OM
+KSELECT q FROM Quote q WHERE q.getQuestion().getEvent().getEventNumber() =?1*"
+
+__unknown_file (
+""20createQuery(Ljava/lang/String;Ljava/lang/Class;)
+}
+ﬁ ﬁ(â&
+Qqueryjavax.persistence.TypedQuery"__id*@
+
+__unknown_file ($
+"
+%9javax.persistence.TypedQuery¢ü
+
+ﬂ ﬂ(0
+%10java.lang.Integer"0domain.Event#getEventNumber()Ljava/lang/Integer;*3
+
+__unknown_file (
+
+eventdomain.Event2getEventNumber()’“
+
+ﬂ ﬂ(1#
+%11javax.persistence.TypedQuery"\javax.persistence.TypedQuery#setParameter(ILjava/lang/Object;)Ljavax/persistence/TypedQuery;*D
+
+__unknown_file ((
+&
+Qqueryjavax.persistence.TypedQuery* 
+
+__unknown_file (2*6
+
+__unknown_file (
+
+%10java.lang.Integer2!setParameter(ILjava/lang/Object;)ª∏
+
+‡ ‡(/
+%12java.util.List"<javax.persistence.TypedQuery#getResultList()Ljava/util/List;*D
+
+__unknown_file ((
+&
+Qqueryjavax.persistence.TypedQuery2getResultList()d
+b
+
+‡ ‡(0
+listQUOjava.util.List"__id*3
+
+__unknown_file (
+
+%12java.util.List*
+13*ú
+15
+› ›(42
+
+› ›(
+%4java.util.Date"java.util.Dateb
+`
+
+› ›(
+%5"java.util.Date#<init>()V*2
+
+__unknown_file (
+
+%4java.util.Dateóî
+
+›  ›(4
+%6java.util.Date"+domain.Event#getEventDate()Ljava/util/Date;*3
+
+__unknown_file (
+
+eventdomain.Event2getEventDate()Ã…
+
+› ›(5	
+%7int"+java.util.Date#compareTo(Ljava/util/Date;)I*2
+
+__unknown_file (
+
+%4java.util.Date*2
+
+__unknown_file (
+
+%6java.util.Date2compareTo(Ljava/util/Date;)*
+14
+1*&
+16
+‹
+ ‹("
+
+‹ ‹(
+""*˝
+18
+÷ ÷(N
+L
+
+÷ ÷(
+qdomain.Question"__id*"
+
+__unknown_file (
+""å
+â
+
+÷ ÷(
+qdomain.Question"
+__arrayGet*5
+
+__unknown_file (
+
+listQjava.util.List*"
+
+__unknown_file (
+""*
+15
+16
+20*´
+1
+ˆ ˆ({
+y
+
+ˆ ˆ(&
+%55javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+dbÍÁ
+
+ˆ ˆ(*
+%56#javax.persistence.EntityTransaction"Ujavax.persistence.EntityManager#getTransaction()Ljavax/persistence/EntityTransaction;*D
+
+__unknown_file ((
+&
+%55javax.persistence.EntityManager2getTransaction()ùö
+
+ˆ ˆ(
+%57void",javax.persistence.EntityTransaction#begin()V*H
+
+__unknown_file (,
+*
+%56#javax.persistence.EntityTransaction2begin(){
+y
+
+˜ ˜(&
+%58javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+dbÌ
+
+˜ ˜(
+%59void";javax.persistence.EntityManager#remove(Ljava/lang/Object;)V*D
+
+__unknown_file ((
+&
+%58javax.persistence.EntityManager*3
+
+__unknown_file (
+
+eventdomain.Event2remove(Ljava/lang/Object;){
+y
+
+¯ ¯(&
+%60javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+dbÍÁ
+
+¯ ¯(*
+%61#javax.persistence.EntityTransaction"Ujavax.persistence.EntityManager#getTransaction()Ljavax/persistence/EntityTransaction;*D
+
+__unknown_file ((
+&
+%60javax.persistence.EntityManager2getTransaction()üú
+
+¯ ¯(
+%62void"-javax.persistence.EntityTransaction#commit()V*H
+
+__unknown_file (,
+*
+%61#javax.persistence.EntityTransaction2commit()"
+
+˘ ˘(
+""*«
+4
+Ó Ó({
+y
+
+Ó Ó(&
+%44javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+dbÍÁ
+
+Ó Ó(*
+%45#javax.persistence.EntityTransaction"Ujavax.persistence.EntityManager#getTransaction()Ljavax/persistence/EntityTransaction;*D
+
+__unknown_file ((
+&
+%44javax.persistence.EntityManager2getTransaction()ùö
+
+Ó Ó( 
+%46void",javax.persistence.EntityTransaction#begin()V*H
+
+__unknown_file (,
+*
+%45#javax.persistence.EntityTransaction2begin()ñì
+
+Ô Ô(!
+%47domain.Question"+domain.Quote#getQuestion()Ldomain/Question;*1
+
+__unknown_file (
+
+quodomain.Quote2getQuestion()êç
+
+Ô Ô(,
+%48domain.Event"(domain.Question#getEvent()Ldomain/Event;*4
+
+__unknown_file (
+
+%47domain.Question2
+getEvent()äá
+
+Ô Ô(7
+%49domain.Sport"%domain.Event#getSport()Ldomain/Sport;*1
+
+__unknown_file (
+
+%48domain.Event2
+getSport()\
+Z
+
+Ô Ô(8
+spodomain.Sport"__id*1
+
+__unknown_file (
+
+%49domain.Sport™ß
+
+ (6
+%50java.lang.Integer"5domain.Sport#getApustuKantitatea()Ljava/lang/Integer;*1
+
+__unknown_file (
+
+spodomain.Sport2getApustuKantitatea()’“
+
+ (9
+%51void"6domain.Sport#setApustuKantitatea(Ljava/lang/Integer;)V*1
+
+__unknown_file (
+
+spodomain.Sport*"
+
+__unknown_file (
+""2(setApustuKantitatea(Ljava/lang/Integer;){
+y
+
+Ò Ò(&
+%52javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+dbÍÁ
+
+Ò Ò(*
+%53#javax.persistence.EntityTransaction"Ujavax.persistence.EntityManager#getTransaction()Ljavax/persistence/EntityTransaction;*D
+
+__unknown_file ((
+&
+%52javax.persistence.EntityManager2getTransaction()üú
+
+Ò Ò(!
+%54void"-javax.persistence.EntityTransaction#commit()V*H
+
+__unknown_file (,
+*
+%53#javax.persistence.EntityTransaction2commit()*
+11*â
+5
+Ï Ï(
+ÚÔ
+
+Ï Ï(
+%43void"<dataAccess.DataAccess#ApustuaIrabazi(Ldomain/ApustuAnitza;)V*5
+
+__unknown_file (
+dataAccess.DataAccess*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2%ApustuaIrabazi(Ldomain/ApustuAnitza;)*
+4*∞
+6
+Î. Î(1ñì
+
+Î. Î(D
+%42boolean"'domain.ApustuAnitza#irabazitaMarkatu()Z*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2irabazitaMarkatu()*
+4
+5*ø
+7
+Î Î(¶£
+
+Î Î( 
+%40java.util.Vector"3domain.ApustuAnitza#getApustuak()Ljava/util/Vector;*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2getApustuak()}{
+
+Î Î(*
+%41boolean"java.util.Vector#isEmpty()Z*5
+
+__unknown_file (
+
+%40java.util.Vector2	isEmpty()*
+4
+6*ä
+8
+Í Í(
+†ù
+
+Í Í('
+%38domain.Registered"0domain.ApustuAnitza#getUser()Ldomain/Registered;*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2	getUser()–Õ
+
+Í Í(-
+%39void"OdataAccess.DataAccess#apustuaEzabatu(Ldomain/Registered;Ldomain/ApustuAnitza;)V*5
+
+__unknown_file (
+dataAccess.DataAccess*6
+
+__unknown_file (
+
+%38domain.Registered*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza28apustuaEzabatu(Ldomain/Registered;Ldomain/ApustuAnitza;)*
+4*à
+9
+È( È(+¢ü
+
+È( È(7
+%36java.lang.String"1domain.ApustuAnitza#getEgoera()Ljava/lang/String;*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2getEgoera()…∆
+
+È( È(I
+%37boolean",java.lang.String#equals(Ljava/lang/Object;)Z*5
+
+__unknown_file (
+
+%36java.lang.String*'
+
+__unknown_file (	
+galduta2equals(Ljava/lang/Object;)*
+7
+8*∞
+20
+◊ ◊(óî
+
+◊ ◊(
+%3java.lang.String"-domain.Question#getResult()Ljava/lang/String;*2
+
+__unknown_file (
+
+qdomain.Question2getResult()*
+18*º
+10
+‰! ‰($òï
+
+‰! ‰(2
+%19java.util.Vector",domain.Quote#getApustuak()Ljava/util/Vector;*1
+
+__unknown_file (
+
+quodomain.Quote2getApustuak()ç
+ä
+
+‰! ‰(9
+%20domain.Apustua"
+__arrayGet*5
+
+__unknown_file (
+
+%19java.util.Vector*"
+
+__unknown_file (
+""™ß
+
+‰! ‰(K
+%21domain.ApustuAnitza"5domain.Apustua#getApustuAnitza()Ldomain/ApustuAnitza;*3
+
+__unknown_file (
+
+%20domain.Apustua2getApustuAnitza()s
+q
+
+‰ ‰(L#
+apustuAnitzadomain.ApustuAnitza"__id*8
+
+__unknown_file (
+
+%21domain.ApustuAnitza{
+y
+
+Â Â(&
+%22javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+db≈¬
+
+Â4 Â(X
+%23java.lang.Integer">domain.ApustuAnitza#getApustuAnitzaNumber()Ljava/lang/Integer;*A
+
+__unknown_file (%
+#
+apustuAnitzadomain.ApustuAnitza2getApustuAnitzaNumber()’“
+
+Â Â(Y
+%24domain.ApustuAnitza"[javax.persistence.EntityManager#find(Ljava/lang/Class;Ljava/lang/Object;)Ljava/lang/Object;*D
+
+__unknown_file ((
+&
+%22javax.persistence.EntityManager*"
+
+__unknown_file (
+""*6
+
+__unknown_file (
+
+%23java.lang.Integer2)find(Ljava/lang/Class;Ljava/lang/Object;)j
+h
+
+Â Â(Z
+ap1domain.ApustuAnitza"__id*8
+
+__unknown_file (
+
+%24domain.ApustuAnitza{
+y
+
+Ê Ê(&
+%25javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+dbÍÁ
+
+Ê Ê(*
+%26#javax.persistence.EntityTransaction"Ujavax.persistence.EntityManager#getTransaction()Ljavax/persistence/EntityTransaction;*D
+
+__unknown_file ((
+&
+%25javax.persistence.EntityManager2getTransaction()ùö
+
+Ê Ê( 
+%27void",javax.persistence.EntityTransaction#begin()V*H
+
+__unknown_file (,
+*
+%26#javax.persistence.EntityTransaction2begin()òï
+
+Á Á((
+%28java.util.Vector",domain.Quote#getApustuak()Ljava/util/Vector;*1
+
+__unknown_file (
+
+quodomain.Quote2getApustuak()ç
+ä
+
+Á Á(/
+%29domain.Apustua"
+__arrayGet*5
+
+__unknown_file (
+
+%28java.util.Vector*"
+
+__unknown_file (
+""‚ﬂ
+
+Á Á(0
+%30void"4domain.ApustuAnitza#removeApustua(Ldomain/Apustua;)V*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza*3
+
+__unknown_file (
+
+%29domain.Apustua2removeApustua(Ldomain/Apustua;){
+y
+
+Ë Ë(&
+%31javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+dbÍÁ
+
+Ë Ë(*
+%32#javax.persistence.EntityTransaction"Ujavax.persistence.EntityManager#getTransaction()Ljavax/persistence/EntityTransaction;*D
+
+__unknown_file ((
+&
+%31javax.persistence.EntityManager2getTransaction()üú
+
+Ë Ë(!
+%33void"-javax.persistence.EntityTransaction#commit()V*H
+
+__unknown_file (,
+*
+%32#javax.persistence.EntityTransaction2commit()¶£
+
+È È(
+%34java.util.Vector"3domain.ApustuAnitza#getApustuak()Ljava/util/Vector;*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2getApustuak()}{
+
+È È(#
+%35boolean"java.util.Vector#isEmpty()Z*5
+
+__unknown_file (
+
+%34java.util.Vector2	isEmpty()*
+7
+9*Ω
+22
+“ “(z
+x
+
+“ “(%
+%0javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+db∆√
+
+“ “()
+%1domain.Event"[javax.persistence.EntityManager#find(Ljava/lang/Class;Ljava/lang/Object;)Ljava/lang/Object;*C
+
+__unknown_file ('
+%
+%0javax.persistence.EntityManager*"
+
+__unknown_file (
+""*0
+
+__unknown_file (
+
+evdomain.Event2)find(Ljava/lang/Class;Ljava/lang/Object;)]
+[
+
+“ “(*
+eventdomain.Event"__id*0
+
+__unknown_file (
+
+%1domain.Eventõò
+
+‘ ‘(-
+%2java.util.Vector"-domain.Event#getQuestions()Ljava/util/Vector;*3
+
+__unknown_file (
+
+eventdomain.Event2getQuestions()c
+a
+
+‘ ‘(.
+listQjava.util.List"__id*4
+
+__unknown_file (
+
+%2java.util.Vector*
+18*™
+11
+„ „(òï
+
+„ „($
+%17java.util.Vector",domain.Quote#getApustuak()Ljava/util/Vector;*1
+
+__unknown_file (
+
+quodomain.Quote2getApustuak()sq
+
+„ „(+
+
+%18int"java.util.Vector#size()I*5
+
+__unknown_file (
+
+%17java.util.Vector2size()*
+13
+10*Õ
+12
+‚ ‚({
+y
+
+‚ ‚(&
+%14javax.persistence.EntityManager"__id*=
+
+__unknown_file (!*
+dataAccess.DataAccess"
+dbç
+ä
+
+‚% ‚(3
+%15domain.Quote"
+__arrayGet*7
+
+__unknown_file (
+
+listQUOjava.util.List*"
+
+__unknown_file (
+""…∆
+
+‚ ‚(4
+%16domain.Quote"[javax.persistence.EntityManager#find(Ljava/lang/Class;Ljava/lang/Object;)Ljava/lang/Object;*D
+
+__unknown_file ((
+&
+%14javax.persistence.EntityManager*"
+
+__unknown_file (
+""*1
+
+__unknown_file (
+
+%15domain.Quote2)find(Ljava/lang/Class;Ljava/lang/Object;)\
+Z
+
+‚ ‚(5
+quodomain.Quote"__id*1
+
+__unknown_file (
+
+%16domain.Quote*
+11: 
+
+—  —((
+evdomain.EventB
+dataAccess.DataAccessHP

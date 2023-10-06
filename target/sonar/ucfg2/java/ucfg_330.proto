@@ -1,0 +1,54 @@
+
+(domain.Quote#equals(Ljava/lang/Object;)ZR
+H/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/domain/Quote.javan n("startingBlock*¶
+2p p(Z
+X
+p p(
+qdomain.Quote"__id*3
+
+__unknown_file (
+
+ojava.lang.Object˜•
+q
+ q(
+%0java.lang.Integer"0domain.Quote#getQuoteNumber()Ljava/lang/Integer;*,
+
+__unknown_file (
+domain.Quote2getQuoteNumber()›˜
+q! q(3
+%1java.lang.Integer"0domain.Quote#getQuoteNumber()Ljava/lang/Integer;*/
+
+__unknown_file (
+
+qdomain.Quote2getQuoteNumber()"
+q q(4
+""*ƒ
+startingBlockn n( ˆ
+…
+m m(
+
+%2"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*3
+
+__unknown_file (
+
+ojava.lang.ObjectU
+S
+n n(
+ojava.lang.Object"__annotation*"
+
+__unknown_file (
+
+%2*
+2
+1*!
+1s
+ s("
+s s(
+"":!
+n n(
+ojava.lang.ObjectB
+domain.QuoteHP

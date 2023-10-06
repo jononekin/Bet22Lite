@@ -1,0 +1,6 @@
+domain.Quote#removeApustua(Ldomain/Apustua;)V
+==
+get java.util.Vector#get(I)Ljava/lang/Object;
+size java.util.Vector#size()I
+getApostuaNumber domain.Apustua#getApostuaNumber()Ljava/lang/Integer;
+remove java.util.Vector#remove(I)Ljava/lang/Object;

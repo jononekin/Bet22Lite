@@ -1,0 +1,232 @@
+
+idomain.TeamRenderer#getListCellRendererComponent(Ljavax/swing/JList;Ldomain/Team;IZZ)Ljava/awt/Component;Y
+O/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/domain/TeamRenderer.java (2"4*¿
+2#
+ #(≥∞
+# #(5
+%19java.awt.Color":javax.swing.JList#getSelectionBackground()Ljava/awt/Color;*7
+
+__unknown_file (
+
+listjavax.swing.JList2getSelectionBackground()ﬁ€
+#
+ #(6
+%20void"7javax.swing.JComponent#setBackground(Ljava/awt/Color;)V*3
+
+__unknown_file (
+domain.TeamRenderer*3
+
+__unknown_file (
+
+%19java.awt.Color2setBackground(Ljava/awt/Color;)≥∞
+$ $(8
+%21java.awt.Color":javax.swing.JList#getSelectionForeground()Ljava/awt/Color;*7
+
+__unknown_file (
+
+listjavax.swing.JList2getSelectionForeground()ﬁ€
+$ $(9
+%22void"7javax.swing.JComponent#setForeground(Ljava/awt/Color;)V*3
+
+__unknown_file (
+domain.TeamRenderer*3
+
+__unknown_file (
+
+%21java.awt.Color2setForeground(Ljava/awt/Color;)*
+1*ﬁ
+3   (≥∞
+   (6
+%13java.awt.Color":javax.swing.JList#getSelectionBackground()Ljava/awt/Color;*7
+
+__unknown_file (
+
+listjavax.swing.JList2getSelectionBackground()M
+K
+   (;
+%14java.awt.Color"__id*"
+
+__unknown_file (
+""ﬁ€
+   (<
+%15void"7javax.swing.JComponent#setBackground(Ljava/awt/Color;)V*3
+
+__unknown_file (
+domain.TeamRenderer*3
+
+__unknown_file (
+
+%14java.awt.Color2setBackground(Ljava/awt/Color;)≥∞
+! !(9
+%16java.awt.Color":javax.swing.JList#getSelectionForeground()Ljava/awt/Color;*7
+
+__unknown_file (
+
+listjavax.swing.JList2getSelectionForeground()M
+K
+! !(?
+%17java.awt.Color"__id*"
+
+__unknown_file (
+""ﬁ€
+! !(@
+%18void"7javax.swing.JComponent#setForeground(Ljava/awt/Color;)V*3
+
+__unknown_file (
+domain.TeamRenderer*3
+
+__unknown_file (
+
+%17java.awt.Color2setForeground(Ljava/awt/Color;)*
+1*ä
+4+ (Méã
+N (]
+%0java.lang.String"(domain.Team#getIzena()Ljava/lang/String;*1
+
+__unknown_file (
+
+teamdomain.Team2
+getIzena()á
+Ñ
++ (]
+%1java.lang.String"__concat*0
++ (M$"
+ .\\src/main/resources\\Equipos\\*$
+N (]
+
+%0java.lang.Stringj
+h
++ (d
+%2java.lang.String"__concat*$
++ (]
+
+%1java.lang.String*
+^ (d
+.png@>
+! (*
+%3javax.swing.ImageIcon"javax.swing.ImageIcon∑
+¥
+ (e
+%4"1javax.swing.ImageIcon#<init>(Ljava/lang/String;)V*9
+
+__unknown_file (
+
+%3javax.swing.ImageIcon*4
+
+__unknown_file (
+
+%2java.lang.Stringq
+o
+ (f"
+	imageIconjavax.swing.ImageIcon"__id*9
+
+__unknown_file (
+
+%3javax.swing.ImageIcon£†
+ ()
+%5java.awt.Image"0javax.swing.ImageIcon#getImage()Ljava/awt/Image;*@
+
+__unknown_file ($
+"
+	imageIconjavax.swing.ImageIcon2
+getImage()_
+]
+ (*
+imagejava.awt.Image"__id*2
+
+__unknown_file (
+
+%5java.awt.ImageA
+?
+6 (H	
+%6int"__id*"
+
+__unknown_file (
+""ñì
+ (I
+%7java.awt.Image"5java.awt.Image#getScaledInstance(III)Ljava/awt/Image;*5
+
+__unknown_file (
+
+imagejava.awt.Image* 
+
+__unknown_file (2Z* 
+
+__unknown_file (2Z*'
+
+__unknown_file (
+	
+%6int2getScaledInstance(III)`
+^
+ (J
+newimgjava.awt.Image"__id*2
+
+__unknown_file (
+
+%7java.awt.Image@>
+ ( 
+%8javax.swing.ImageIcon"javax.swing.ImageIcon∑
+¥
+ ((
+%9"/javax.swing.ImageIcon#<init>(Ljava/awt/Image;)V*9
+
+__unknown_file (
+
+%8javax.swing.ImageIcon*6
+
+__unknown_file (
+
+newimgjava.awt.Imageq
+o
+ (("
+	imageIconjavax.swing.ImageIcon"__id*9
+
+__unknown_file (
+
+%8javax.swing.ImageIconﬂ‹
+
+ (
+%10void"/javax.swing.JLabel#setIcon(Ljavax/swing/Icon;)V*3
+
+__unknown_file (
+domain.TeamRenderer*@
+
+__unknown_file ($
+"
+	imageIconjavax.swing.ImageIcon2setIcon(Ljavax/swing/Icon;)èå
+ (!
+%11java.lang.String"(domain.Team#getIzena()Ljava/lang/String;*1
+
+__unknown_file (
+
+teamdomain.Team2
+getIzena()‘—
+
+ ("
+%12void"/javax.swing.JLabel#setText(Ljava/lang/String;)V*3
+
+__unknown_file (
+domain.TeamRenderer*5
+
+__unknown_file (
+
+%11java.lang.String2setText(Ljava/lang/String;)*
+2
+3*2
+1' '("#
+'	 '(
+domain.TeamRenderer:%
+3 (N
+listjavax.swing.JList:
+O (Y
+teamdomain.Team: 
+
+__unknown_file (
+"": 
+
+__unknown_file (
+"": 
+
+__unknown_file (
+""B
+domain.TeamRendererH
