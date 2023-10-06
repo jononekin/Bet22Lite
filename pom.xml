@@ -64,7 +64,7 @@
  	 	<sonar.organization>is2madbfg</sonar.organization>
   		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.projectKey>is2madbfg_bet22lite</sonar.projectKey>
-		<sonar.login>${env.SONAR_TOKEN}</sonar.login>
+		<!-- <sonar.login>${env.SONAR_TOKEN}</sonar.login> -->
 	</properties>
 
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
