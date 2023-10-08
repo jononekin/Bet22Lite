@@ -15,6 +15,10 @@ import javax.xml.bind.annotation.XmlID;
 @XmlAccessorType(XmlAccessType.FIELD)
 @Entity
 public class Sport implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@XmlID
 	@Id 
 	private String izena;

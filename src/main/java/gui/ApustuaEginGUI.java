@@ -33,10 +33,7 @@ import configuration.UtilDate;
 import domain.Event;
 import domain.Question;
 import domain.Quote;
-import domain.Transaction;
 import domain.Registered;
-import exceptions.ApustuaAlreadyExist;
-import exceptions.EventFinished;
 import java.awt.Font;
 
 public class ApustuaEginGUI extends JFrame{
@@ -67,7 +64,7 @@ public class ApustuaEginGUI extends JFrame{
 	private final JTextField textFieldDiruKop = new JTextField();
 	private final JButton jButtonCreate = new JButton();
 
-	private JComboBox jComboBoxQuotes;
+	private JComboBox<Quote> jComboBoxQuotes;
 	DefaultComboBoxModel<Quote> modelQuotes = new DefaultComboBoxModel<Quote>();
 	
 	private Registered user; 
@@ -97,13 +94,13 @@ public class ApustuaEginGUI extends JFrame{
 		textFieldDiruKop.setBounds(210, 313, 394, 37);
 		textFieldDiruKop.setColumns(10);
 		try {
-			jbInit(v, q);
+			jbInit(q);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void jbInit(Vector<domain.Event> v, Quote q) throws Exception {
+	private void jbInit(Quote q) throws Exception {
 
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(1250, 470));
@@ -170,7 +167,7 @@ public class ApustuaEginGUI extends JFrame{
 		
 		getContentPane().add(jLabelQuotes);
 		
-		jComboBoxQuotes = new JComboBox();
+		jComboBoxQuotes = new JComboBox<Quote>();
 		jComboBoxQuotes.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		jComboBoxQuotes.setBounds(330, 235, 274, 34);
 		jComboBoxQuotes.setModel(modelQuotes);
@@ -236,7 +233,6 @@ public class ApustuaEginGUI extends JFrame{
 								btnApustuaGehitu.setVisible(true);
 								jButtonCreate.setVisible(false);
 								textFieldDiruKop.setVisible(false);
-								//jLabelDiruKopurua.setVisible(false);
 							}else {
 								lblError.setVisible(true); 
 								lblError.setText(ResourceBundle.getBundle("Etiquetas").getString("ApustuaError1")); 
@@ -278,14 +274,12 @@ public class ApustuaEginGUI extends JFrame{
 		jButtonFinish.setEnabled(false);
 		jButtonFinish.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//jLabelDiruKopurua.setVisible(true);
 				textFieldDiruKop.setVisible(true);
 				btnApustuaGehitu.setVisible(false);
 				jButtonCreate.setVisible(true);
 				jButtonCreate.setEnabled(true);
 				jButtonFinish.setEnabled(false);
 				textFieldDiruKop.setVisible(true);
-				//jLabelDiruKopurua.setVisible(true);
 				textFieldDiruKop.setText("");
 			}
 		});
@@ -353,8 +347,6 @@ public class ApustuaEginGUI extends JFrame{
 					
 					btnApustuaGehitu.setEnabled(false);
 				}
-//				this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
-//					public void propertyChange(PropertyChangeEvent propertychangeevent) {
 				if (propertychangeevent.getPropertyName().equals("locale")) {
 					jCalendar.setLocale((Locale) propertychangeevent.getNewValue());
 				} else if (propertychangeevent.getPropertyName().equals("calendar")) {
@@ -385,7 +377,6 @@ public class ApustuaEginGUI extends JFrame{
 
 					paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 
-					//	Date firstDay = UtilDate.trim(new Date(jCalendar.getCalendar().getTime().getTime()));
 					Date firstDay = UtilDate.trim(calendarAct.getTime());
 
 					try {
@@ -410,7 +401,7 @@ public class ApustuaEginGUI extends JFrame{
 						}
 						jComboBoxEvents.repaint();
 						
-						if (events.size() == 0) {
+						if (events.isEmpty()) {
 							btnApustuaGehitu.setEnabled(false);
 						}else {
 							
@@ -461,7 +452,6 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			// the empty days before day 1 of month, and all the days previous to each day.
 			// That number of components is calculated with "offset" and is different in
 			// English and Spanish
-//			    		  Component o=(Component) jCalendar.getDayChooser().getDayPanel().getComponent(i+offset);; 
 			Component o = (Component) jCalendar.getDayChooser().getDayPanel()
 					.getComponent(calendar.get(Calendar.DAY_OF_MONTH) + offset);
 			o.setBackground(Color.CYAN);

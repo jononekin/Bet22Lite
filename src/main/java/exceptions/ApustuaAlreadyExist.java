@@ -1,6 +1,10 @@
 package exceptions;
 
 public class ApustuaAlreadyExist extends Exception{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public ApustuaAlreadyExist()
 	  {
 	    super();

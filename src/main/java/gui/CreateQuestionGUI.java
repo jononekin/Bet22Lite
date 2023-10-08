@@ -86,7 +86,6 @@ public class CreateQuestionGUI extends JFrame {
 
 		jLabelMsg.setBounds(new Rectangle(275, 182, 305, 20));
 		jLabelMsg.setForeground(Color.red);
-		// jLabelMsg.setSize(new Dimension(305, 20));
 
 		jLabelError.setBounds(new Rectangle(175, 240, 305, 20));
 		jLabelError.setForeground(Color.red);
@@ -121,8 +120,6 @@ public class CreateQuestionGUI extends JFrame {
 		// Code for JCalendar
 		this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent propertychangeevent) {
-//				this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
-//					public void propertyChange(PropertyChangeEvent propertychangeevent) {
 				if (propertychangeevent.getPropertyName().equals("locale")) {
 					jCalendar.setLocale((Locale) propertychangeevent.getNewValue());
 				} else if (propertychangeevent.getPropertyName().equals("calendar")) {
@@ -153,7 +150,6 @@ public class CreateQuestionGUI extends JFrame {
 
 					paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 
-					//	Date firstDay = UtilDate.trim(new Date(jCalendar.getCalendar().getTime().getTime()));
 					Date firstDay = UtilDate.trim(calendarAct.getTime());
 
 					try {
@@ -174,7 +170,7 @@ public class CreateQuestionGUI extends JFrame {
 							modelEvents.addElement(ev);
 						jComboBoxEvents.repaint();
 
-						if (events.size() == 0)
+						if (events.isEmpty())
 							jButtonCreate.setEnabled(false);
 						else
 							jButtonCreate.setEnabled(true);
@@ -223,7 +219,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			// That number of components is calculated with "offset" and is different in
 			// English and Spanish
 //			    		  Component o=(Component) jCalendar.getDayChooser().getDayPanel().getComponent(i+offset);; 
-			Component o = (Component) jCalendar.getDayChooser().getDayPanel()
+			Component o = jCalendar.getDayChooser().getDayPanel()
 					.getComponent(calendar.get(Calendar.DAY_OF_MONTH) + offset);
 			o.setBackground(Color.CYAN);
 	 	}

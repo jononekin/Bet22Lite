@@ -34,7 +34,6 @@ public class BusinessLogicServer extends JDialog {
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	JTextArea textArea;
-	BLFacade server;
 	String service;
 
 	public static void main(String[] args) {
@@ -75,7 +74,7 @@ public class BusinessLogicServer extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						textArea.append("\n\n\nClosing the server... ");
 					    
-							//server.close();
+
 						
 						System.exit(1);
 					}

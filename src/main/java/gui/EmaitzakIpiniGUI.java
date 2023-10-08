@@ -29,7 +29,6 @@ import configuration.UtilDate;
 import domain.Event;
 import domain.Question;
 import domain.Quote;
-import domain.Registered;
 import exceptions.EventNotFinished;
 import javax.swing.SwingConstants;
 
@@ -58,10 +57,9 @@ public class EmaitzakIpiniGUI extends JFrame{
 	private domain.Event event;
 	private final JLabel jLabelQuotes = new JLabel(); 
 
-	private JComboBox jComboBoxQuotes;
+	private JComboBox<Quote> jComboBoxQuotes;
 	DefaultComboBoxModel<Quote> modelQuotes = new DefaultComboBoxModel<Quote>();
 	
-	private Registered user; 
 	private final JButton jButtonEmaitzaIpini = new JButton(ResourceBundle.getBundle("Etiquetas").getString("EmaitzaIpini")); 
 	private final JLabel jLabelError = new JLabel();
 	
@@ -146,14 +144,13 @@ public class EmaitzakIpiniGUI extends JFrame{
 		
 		getContentPane().add(jLabelQuotes);
 		
-		jComboBoxQuotes = new JComboBox();
+		jComboBoxQuotes = new JComboBox<Quote>();
 		jComboBoxQuotes.setBounds(275, 158, 250, 21);
 		jComboBoxQuotes.setModel(modelQuotes);
 		
 		getContentPane().add(jComboBoxQuotes);
 		jButtonEmaitzaIpini.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Question que= (Question) jComboBoxQuestions.getSelectedItem();
 				Quote q = (Quote)jComboBoxQuotes.getSelectedItem(); 
 				try {
 					businessLogic.EmaitzakIpini(q);
@@ -209,8 +206,6 @@ public class EmaitzakIpiniGUI extends JFrame{
 				}else {
 					jButtonEmaitzaIpini.setEnabled(false);
 				}
-//				this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
-//					public void propertyChange(PropertyChangeEvent propertychangeevent) {
 				if (propertychangeevent.getPropertyName().equals("locale")) {
 					jCalendar.setLocale((Locale) propertychangeevent.getNewValue());
 				} else if (propertychangeevent.getPropertyName().equals("calendar")) {
@@ -241,7 +236,6 @@ public class EmaitzakIpiniGUI extends JFrame{
 
 					paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 
-					//	Date firstDay = UtilDate.trim(new Date(jCalendar.getCalendar().getTime().getTime()));
 					Date firstDay = UtilDate.trim(calendarAct.getTime());
 
 					try {
@@ -315,8 +309,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			// the empty days before day 1 of month, and all the days previous to each day.
 			// That number of components is calculated with "offset" and is different in
 			// English and Spanish
-//			    		  Component o=(Component) jCalendar.getDayChooser().getDayPanel().getComponent(i+offset);; 
-			Component o = (Component) jCalendar.getDayChooser().getDayPanel()
+			Component o = jCalendar.getDayChooser().getDayPanel()
 					.getComponent(calendar.get(Calendar.DAY_OF_MONTH) + offset);
 			o.setBackground(Color.CYAN);
 	 	}

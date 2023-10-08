@@ -17,6 +17,10 @@ import javax.xml.bind.annotation.XmlIDREF;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Registered  implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@XmlID
 	private String usrname;
@@ -167,7 +171,7 @@ public class Registered  implements Serializable{
 	
 	@Override
 	public String toString() {
-		if(this.mode=="RankingGUI")
+		if("RankingGUI".equals(this.mode))
 			return this.getUsername() + " " + this.zenbat +": " + this.irabazitakoa + "�";
 		else
 			return this.getUsername();

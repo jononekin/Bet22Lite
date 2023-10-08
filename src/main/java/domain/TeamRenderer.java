@@ -8,14 +8,13 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 
-import businessLogic.BLFacade;
-import gui.MainGUI;
-
 public class TeamRenderer extends JLabel implements ListCellRenderer<Team>{
 
-	private BLFacade businessLogic = MainGUI.getBusinessLogic();
-
-	 public TeamRenderer() {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	public TeamRenderer() {
 		  setOpaque(true);
 	    }
 	 

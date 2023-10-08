@@ -22,7 +22,7 @@ public class ApustuBerdinakGUI extends JFrame{
 	private BLFacade businessLogic = MainGUI.getBusinessLogic();
 	private static final long serialVersionUID = 1L;
 	private JLabel lblApustuak;
-	private JList list;
+	private JList<ApustuAnitza> list;
 	private DefaultListModel<ApustuAnitza> apustuLista = new DefaultListModel<ApustuAnitza>();
 	private JScrollPane scrollBar;
 	private JButton btnClose;
@@ -41,7 +41,7 @@ public class ApustuBerdinakGUI extends JFrame{
 		lblApustuak.setBounds(10, 10, 366, 13);
 		getContentPane().add(lblApustuak);
 		
-		list = new JList();
+		list = new JList<ApustuAnitza>();
 		list.setModel(apustuLista);
 		list.setBounds(138, 70, 1, 1);
 		getContentPane().add(list);

@@ -1,14 +1,10 @@
 package domain;
 
 import java.io.Serializable;
-import java.util.Vector;
-
-import javax.persistence.CascadeType;
+import java.util.Objects;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlID;
@@ -18,6 +14,11 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @Entity
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Apustua implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@XmlID
 	@XmlJavaTypeAdapter(IntegerAdapter.class)
@@ -74,7 +75,7 @@ public class Apustua implements Serializable{
 	}
 	
 	public boolean galdutaMarkatu(Quote quo) {
-		if(kuota.getQuestion().getQuestionNumber()==quo.getQuestion().getQuestionNumber() && quo.getQuoteNumber()!=kuota.getQuoteNumber()) {
+		if(Objects.equals(kuota.getQuestion().getQuestionNumber(), quo.getQuestion().getQuestionNumber()) && quo.getQuoteNumber()!=kuota.getQuoteNumber()) {
 			this.egoera="galduta";
 			return true;
 		}

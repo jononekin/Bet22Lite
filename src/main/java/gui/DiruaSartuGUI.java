@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -19,7 +18,6 @@ import java.awt.Color;
 
 public class DiruaSartuGUI extends JFrame{
 	
-	private JPanel jContentPane = null;
 	private JTextField textFieldDiruaSartu;
 	private JLabel lblTitulo;
 	private JLabel lblError;

@@ -64,7 +64,7 @@ public class FindQuestionsGUI extends JFrame {
 	}
 
 	
-	private void jbInit() throws Exception
+	private void jbInit()
 	{
 
 		this.getContentPane().setLayout(null);
@@ -113,7 +113,6 @@ public class FindQuestionsGUI extends JFrame {
 					calendarAnt = (Calendar) propertychangeevent.getOldValue();
 					calendarAct = (Calendar) propertychangeevent.getNewValue();
 					DateFormat dateformat1 = DateFormat.getDateInstance(1, jCalendar1.getLocale());
-//					jCalendar1.setCalendar(calendarAct);
 					Date firstDay=UtilDate.trim(new Date(jCalendar1.getCalendar().getTime().getTime()));
 
 					 

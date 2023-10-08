@@ -26,7 +26,6 @@ import com.toedter.calendar.JCalendar;
 
 import businessLogic.BLFacade;
 import configuration.UtilDate;
-import domain.Apustua;
 import domain.Event;
 import javax.swing.SwingConstants;
 
@@ -121,7 +120,7 @@ public class GertaeraEzabatuGUI extends JFrame{
 					modelEvents.addElement(a); 
 				}
 				
-				if(b==false) {
+				if(!b) {
 					jLabelErrorea.setVisible(true);
 					jLabelErrorea.setText(ResourceBundle.getBundle("Etiquetas").getString("GertaeraEzabError"));
 				}else {
@@ -145,8 +144,6 @@ public class GertaeraEzabatuGUI extends JFrame{
 		this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent propertychangeevent) {
 				jLabelErrorea.setVisible(false);
-//				this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
-//					public void propertyChange(PropertyChangeEvent propertychangeevent) {
 				if (propertychangeevent.getPropertyName().equals("locale")) {
 					jCalendar.setLocale((Locale) propertychangeevent.getNewValue());
 				} else if (propertychangeevent.getPropertyName().equals("calendar")) {
@@ -177,7 +174,6 @@ public class GertaeraEzabatuGUI extends JFrame{
 
 					paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 
-					//	Date firstDay = UtilDate.trim(new Date(jCalendar.getCalendar().getTime().getTime()));
 					Date firstDay = UtilDate.trim(calendarAct.getTime());
 
 					try {
@@ -198,7 +194,7 @@ public class GertaeraEzabatuGUI extends JFrame{
 							modelEvents.addElement(ev);
 						jComboBoxEvents.repaint();
 
-						if (events.size() == 0)
+						if (events.isEmpty())
 							jButtonEzabatu.setEnabled(false);
 						else
 							jButtonEzabatu.setEnabled(true);
@@ -246,8 +242,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			// the empty days before day 1 of month, and all the days previous to each day.
 			// That number of components is calculated with "offset" and is different in
 			// English and Spanish
-//			    		  Component o=(Component) jCalendar.getDayChooser().getDayPanel().getComponent(i+offset);; 
-			Component o = (Component) jCalendar.getDayChooser().getDayPanel()
+			Component o = jCalendar.getDayChooser().getDayPanel()
 					.getComponent(calendar.get(Calendar.DAY_OF_MONTH) + offset);
 			o.setBackground(Color.CYAN);
 	 	}
