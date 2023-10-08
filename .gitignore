@@ -204,3 +204,5 @@ README.html
 *.iml
 .idea
 .exercism
+src/main/resources/bets.temp
+src/main/resources/bets.temp$
