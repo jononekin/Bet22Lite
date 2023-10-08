@@ -69,7 +69,7 @@ public class GertaerakSortuGUI extends JFrame{
 		}
 	}
 
-	private void jbInit() throws Exception {
+	private void jbInit() {
 
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(604, 370));
@@ -85,7 +85,7 @@ public class GertaerakSortuGUI extends JFrame{
 		jButtonClose.setBounds(new Rectangle(275, 298, 130, 25));
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButtonClose_actionPerformed(e);
+				jButtonClose_actionPerformed();
 			}
 		});
 
@@ -138,12 +138,12 @@ public class GertaerakSortuGUI extends JFrame{
 				
 				Date firstDay=UtilDate.trim(new Date(jCalendar.getCalendar().getTime().getTime()));
 
-				if(txtDescription.getText().trim().isBlank()==false) {
-					if(txtSport.getText().trim().isBlank()==false) {
+				if(!txtDescription.getText().trim().isBlank()) {
+					if(!txtSport.getText().trim().isBlank()) {
 						String description = txtDescription.getText();
 						String sport =txtSport.getText();
 						try {
-							if(businessLogic.gertaerakSortu(description, firstDay, sport)==false) {
+							if(!businessLogic.gertaerakSortu(description, firstDay, sport)) {
 								descriptionLabel.setVisible(true);
 								descriptionLabel.setText(ResourceBundle.getBundle("Etiquetas").getString("GertaeraSorError"));
 							}else {
@@ -172,8 +172,6 @@ public class GertaerakSortuGUI extends JFrame{
 		// Code for JCalendar
 		this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent propertychangeevent) {
-//				this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
-//					public void propertyChange(PropertyChangeEvent propertychangeevent) {
 				if (propertychangeevent.getPropertyName().equals("locale")) {
 					jCalendar.setLocale((Locale) propertychangeevent.getNewValue());
 				} else if (propertychangeevent.getPropertyName().equals("calendar")) {
@@ -204,7 +202,6 @@ public class GertaerakSortuGUI extends JFrame{
 
 					paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 
-					//	Date firstDay = UtilDate.trim(new Date(jCalendar.getCalendar().getTime().getTime()));
 					Date firstDay = UtilDate.trim(calendarAct.getTime());
 
 					try {
@@ -271,8 +268,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			// the empty days before day 1 of month, and all the days previous to each day.
 			// That number of components is calculated with "offset" and is different in
 			// English and Spanish
-//			    		  Component o=(Component) jCalendar.getDayChooser().getDayPanel().getComponent(i+offset);; 
-			Component o = (Component) jCalendar.getDayChooser().getDayPanel()
+			Component o = jCalendar.getDayChooser().getDayPanel()
 					.getComponent(calendar.get(Calendar.DAY_OF_MONTH) + offset);
 			o.setBackground(Color.CYAN);
 	 	}
@@ -284,7 +280,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 	 	
 	}
 
-	private void jButtonClose_actionPerformed(ActionEvent e) {
+	private void jButtonClose_actionPerformed() {
 		this.setVisible(false);
 	}
 }

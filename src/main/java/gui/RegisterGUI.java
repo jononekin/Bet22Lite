@@ -9,7 +9,6 @@ import java.util.ResourceBundle;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -19,7 +18,10 @@ import businessLogic.BLFacade;
 
 public class RegisterGUI extends JFrame {
 	
-	private JPanel contentPane= null;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JTextField txtUsername;
 	private JTextField txtPassword;
 	private JLabel izenaSartu = new JLabel(); 
@@ -43,7 +45,7 @@ public class RegisterGUI extends JFrame {
 	}
 
 	
-	private void jbInit() throws Exception
+	private void jbInit()
 	{
 		thisw=this;
 		this.setSize(new Dimension(700, 500));
@@ -54,14 +56,12 @@ public class RegisterGUI extends JFrame {
 		txtUsername.setBounds(263, 114, 224, 51);
 		txtUsername.setHorizontalAlignment(SwingConstants.CENTER);
 		txtUsername.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		//txtUsername.setText(ResourceBundle.getBundle("Etiquetas").getString("Username"));
 		getContentPane().add(txtUsername);
 		txtUsername.setColumns(10);
 		
 		txtPassword = new JPasswordField();
 		txtPassword.setBounds(263, 208, 224, 51);
 		txtPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		//txtPassword.setText(ResourceBundle.getBundle("Etiquetas").getString("Password")); //$NON-NLS-1$ //$NON-NLS-2$
 		txtPassword.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		txtPassword.setColumns(10);
 		getContentPane().add(txtPassword);
@@ -132,7 +132,7 @@ public class RegisterGUI extends JFrame {
 					passSartu.setVisible(false);
 					kontuaSartu.setVisible(false);
 					
-					if(businessLogic.isRegister(izena) == false) {
+					if(!businessLogic.isRegister(izena)) {
 						try {
 							Integer i = Integer.parseInt(bankAccount);
 							businessLogic.storeRegistered(izena, password, i);

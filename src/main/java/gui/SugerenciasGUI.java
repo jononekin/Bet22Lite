@@ -13,7 +13,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
@@ -41,7 +40,7 @@ public class SugerenciasGUI extends JFrame{
 
 	private JScrollPane scrollBar;
 
-	private JList list;
+	private JList<Event> list;
 	private DefaultListModel<Event> eventLista = new DefaultListModel<Event>();
 	private JLabel lblEvent;
 	private JButton btnApostar;
@@ -53,10 +52,10 @@ public class SugerenciasGUI extends JFrame{
 
 	private JScrollPane scrollBar_1;
 
-	private JList list_1;
+	private JList<Question> list_1;
 	private DefaultListModel<Question> questionLista = new DefaultListModel<Question>();
 	private JLabel lblQuote;
-	private JList list_2;
+	private JList<Quote> list_2;
 	private DefaultListModel<Quote> quoteLista = new DefaultListModel<Quote>();
 	private JScrollPane scrollBar_2;
 	private JLabel lblErrorQuestion;
@@ -92,7 +91,6 @@ public class SugerenciasGUI extends JFrame{
 		lblErrorQuote.setBounds(127, 504, 382, 30);
 		getContentPane().add(lblErrorQuote);
 		
-		//s = businessLogic.gehiengoaLortu(user);
 		lblDeporte.setText(s.getIzena());
 		if(s.getIzena().equals("Futbol")) {
 			ImageIcon imageIcon = new ImageIcon(".\\src/main/resources\\data\\futbol.png"); // load the image to a imageIcon
@@ -120,13 +118,13 @@ public class SugerenciasGUI extends JFrame{
 		btnApostar.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnApostar.setBackground(Color.PINK);
 		btnApostar.setForeground(Color.DARK_GRAY);
-		list = new JList();
+		list = new JList<Event>();
 		list.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				btnApostar.setEnabled(false);
 				questionLista.removeAllElements();
-				for(domain.Question question : businessLogic.findQuestion((Event)list.getSelectedValue()))
+				for(domain.Question question : businessLogic.findQuestion(list.getSelectedValue()))
 					questionLista.addElement(question); 
 				if(questionLista.size()==0) {
 					lblErrorQuestion.setVisible(true);
@@ -153,7 +151,7 @@ public class SugerenciasGUI extends JFrame{
 		
 		btnApostar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFrame a =new ApustuaEginGUI(new Vector<Event>(),user, (Quote)list_2.getSelectedValue());
+				JFrame a =new ApustuaEginGUI(new Vector<Event>(),user, list_2.getSelectedValue());
 				a.setVisible(true);
 				thisw.setVisible(false);
 			}
@@ -167,7 +165,7 @@ public class SugerenciasGUI extends JFrame{
 		btnClose.setBackground(Color.DARK_GRAY);
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButtonClose_actionPerformed(e);
+				jButtonClose_actionPerformed();
 				JFrame a= new DestacadosGUI(user);
 				a.setVisible(true);
 			}
@@ -182,13 +180,13 @@ public class SugerenciasGUI extends JFrame{
 		
 		lblErrorQuote.setVisible(false);
 		
-		list_1 = new JList();
+		list_1 = new JList<Question>();
 		list_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		list_1.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				btnApostar.setEnabled(false);
 				quoteLista.removeAllElements();
-				for(domain.Quote quote : businessLogic.findQuote((Question)list_1.getSelectedValue()))
+				for(domain.Quote quote : businessLogic.findQuote(list_1.getSelectedValue()))
 					quoteLista.addElement(quote);
 				if(quoteLista.size()==0) {
 					btnApostar.setEnabled(false);
@@ -217,7 +215,7 @@ public class SugerenciasGUI extends JFrame{
 		lblQuote.setBounds(23, 504, 89, 30);
 		getContentPane().add(lblQuote);
 		
-		list_2 = new JList();
+		list_2 = new JList<Quote>();
 		list_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		list_2.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
@@ -234,7 +232,7 @@ public class SugerenciasGUI extends JFrame{
 		
 		eventLista.addAll(s.getEvents());
 	}
-	private void jButtonClose_actionPerformed(ActionEvent e) {
+	private void jButtonClose_actionPerformed() {
 		this.setVisible(false);
 	}
 }

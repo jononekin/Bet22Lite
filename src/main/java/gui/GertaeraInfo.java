@@ -32,9 +32,9 @@ public class GertaeraInfo extends JFrame{
 	private JLabel lblTitle;
 	private JLabel lblDate;
 	private JScrollPane scrollBar;
-	private JList list;
+	private JList<Question> list;
 	private DefaultListModel<Question> questionLista = new DefaultListModel<Question>();
-	private JList list_1;
+	private JList<Quote> list_1;
 	private JScrollPane scrollBar_1;
 	private DefaultListModel<Quote> quoteLista = new DefaultListModel<Quote>();
 	private JLabel lblEvent;
@@ -65,13 +65,13 @@ public class GertaeraInfo extends JFrame{
 	getContentPane().add(lblDate);
 	lblDate.setText(ev.getEventDate().toString());
 	
-	list = new JList();
-	list_1 = new JList();
+	list = new JList<Question>();
+	list_1 = new JList<Quote>();
 	questionLista.addAll(ev.getQuestions());
 	list.addListSelectionListener(new ListSelectionListener() {
 		public void valueChanged(ListSelectionEvent e) {
 			quoteLista.removeAllElements();
-			quoteLista.addAll(((Question)list.getSelectedValue()).getQuotes());
+			quoteLista.addAll((list.getSelectedValue()).getQuotes());
 
 		}
 	});
@@ -97,7 +97,7 @@ public class GertaeraInfo extends JFrame{
 	btnNewButton.setForeground(Color.WHITE);
 	btnNewButton.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
-			jButtonClose_actionPerformed(e);
+			jButtonClose_actionPerformed();
 		}
 	});
 	btnNewButton.setBounds(330, 322, 85, 21);
@@ -142,7 +142,7 @@ public class GertaeraInfo extends JFrame{
 	}
 	}
 	
-	private void jButtonClose_actionPerformed(ActionEvent e) {
+	private void jButtonClose_actionPerformed() {
 		this.setVisible(false);
 	}
 }

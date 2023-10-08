@@ -11,7 +11,6 @@ import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -90,7 +89,7 @@ public class KuotakIpiniGUI extends JFrame{
 		jButtonClose.setBounds(new Rectangle(249, 275, 130, 30));
 		jButtonClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButtonClose_actionPerformed(e);
+				jButtonClose_actionPerformed();
 			}
 		});
 
@@ -198,7 +197,6 @@ public class KuotakIpiniGUI extends JFrame{
 								jLabelErrorForecast.setVisible(true);
 								jLabelErrorForecast.setText(ResourceBundle.getBundle("Etiquetas").getString("QuoCorrect"));
 							} catch (QuoteAlreadyExist e1) {
-								// TODO Auto-generated catch block
 								jLabelErrorForecast.setVisible(true);
 								jLabelErrorForecast.setText(ResourceBundle.getBundle("Etiquetas").getString("QuoteExist"));
 							}
@@ -221,8 +219,6 @@ public class KuotakIpiniGUI extends JFrame{
 		// Code for JCalendar
 		this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
 			public void propertyChange(PropertyChangeEvent propertychangeevent) {
-//				this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
-//					public void propertyChange(PropertyChangeEvent propertychangeevent) {
 				if (propertychangeevent.getPropertyName().equals("locale")) {
 					jCalendar.setLocale((Locale) propertychangeevent.getNewValue());
 				} else if (propertychangeevent.getPropertyName().equals("calendar")) {
@@ -253,7 +249,6 @@ public class KuotakIpiniGUI extends JFrame{
 
 					paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 
-					//	Date firstDay = UtilDate.trim(new Date(jCalendar.getCalendar().getTime().getTime()));
 					Date firstDay = UtilDate.trim(calendarAct.getTime());
 
 					try {
@@ -278,7 +273,7 @@ public class KuotakIpiniGUI extends JFrame{
 						}
 						jComboBoxEvents.repaint();
 						
-						if (events.size() == 0)
+						if (events.isEmpty())
 							jButtonCreate.setEnabled(false);
 						else
 							jButtonCreate.setEnabled(true);
@@ -327,8 +322,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			// the empty days before day 1 of month, and all the days previous to each day.
 			// That number of components is calculated with "offset" and is different in
 			// English and Spanish
-//			    		  Component o=(Component) jCalendar.getDayChooser().getDayPanel().getComponent(i+offset);; 
-			Component o = (Component) jCalendar.getDayChooser().getDayPanel()
+			Component o = jCalendar.getDayChooser().getDayPanel()
 					.getComponent(calendar.get(Calendar.DAY_OF_MONTH) + offset);
 			o.setBackground(Color.CYAN);
 	 	}
@@ -340,7 +334,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 	 	
 	}
 
-	private void jButtonClose_actionPerformed(ActionEvent e) {
+	private void jButtonClose_actionPerformed() {
 		this.setVisible(false);
 	}
 }
