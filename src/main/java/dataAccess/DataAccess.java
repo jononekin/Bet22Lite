@@ -1,7 +1,6 @@
 package dataAccess;
 
 import java.util.ArrayList;
-//hello
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
@@ -11,20 +10,16 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Vector;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-
 import configuration.ConfigXML;
 import configuration.UtilDate;
 import domain.ApustuAnitza;
 import domain.Apustua;
-
 import domain.Event;
 import domain.Jarraitzailea;
-
 import domain.Question;
 import domain.Quote;
 import domain.Registered;
