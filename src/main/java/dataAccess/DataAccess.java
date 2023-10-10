@@ -722,7 +722,7 @@ public void open(boolean initializeMode){
 		db.getTransaction().commit();
 	}
 	
-	public boolean gertaerakSortu(String description,Date eventDate, String sport) {
+	public boolean gertaerakSortu(String description,Date eventDate, String sport) { //Olarizu
 		boolean b = true;
 		db.getTransaction().begin();
 		Sport spo =db.find(Sport.class, sport);
@@ -933,37 +933,37 @@ public void open(boolean initializeMode){
 		db.getTransaction().commit();
 	}
 	
-	public void EmaitzakIpini(Quote quote) throws EventNotFinished{
+	public void EmaitzakIpini(Quote quote) throws EventNotFinished{ //Agustin
 		
-		Quote q = db.find(Quote.class, quote); 
-		String result = q.getForecast();
+		Quote q = db.find(Quote.class, quote); //1
+		String result = q.getForecast(); //2
 		
-		if(new Date().compareTo(q.getQuestion().getEvent().getEventDate())<0)
-			throw new EventNotFinished();
+		if(new Date().compareTo(q.getQuestion().getEvent().getEventDate())<0) //3
+			throw new EventNotFinished(); //4
 
-		Vector<Apustua> listApustuak = q.getApustuak();
-		db.getTransaction().begin();
-		Question que = q.getQuestion(); 
-		Question question = db.find(Question.class, que); 
-		question.setResult(result);
-		for(Quote quo: question.getQuotes()) {
-			for(Apustua apu: quo.getApustuak()) {
+		Vector<Apustua> listApustuak = q.getApustuak(); //5
+		db.getTransaction().begin(); //6
+		Question que = q.getQuestion();  //7
+		Question question = db.find(Question.class, que); //8
+		question.setResult(result); //9
+		for(Quote quo: question.getQuotes()) { //10
+			for(Apustua apu: quo.getApustuak()) { //11
 				
-				Boolean b=apu.galdutaMarkatu(quo);
-				if(b) {
-					apu.getApustuAnitza().setEgoera("galduta");
-				}else {
-					apu.setEgoera("irabazita");
+				Boolean b=apu.galdutaMarkatu(quo); //12
+				if(b) { //13
+					apu.getApustuAnitza().setEgoera("galduta"); //14
+				}else { //15
+					apu.setEgoera("irabazita"); //16
 				}
 			}
 		}
-		db.getTransaction().commit();
-		for(Apustua a : listApustuak) {
-			db.getTransaction().begin();
-			Boolean bool=a.getApustuAnitza().irabazitaMarkatu();
-			db.getTransaction().commit();
-			if(bool) {
-				this.ApustuaIrabazi(a.getApustuAnitza());
+		db.getTransaction().commit(); //17
+		for(Apustua a : listApustuak) { //18
+			db.getTransaction().begin(); //19
+			Boolean bool=a.getApustuAnitza().irabazitaMarkatu(); //20
+			db.getTransaction().commit(); //21
+			if(bool) { //22
+				this.ApustuaIrabazi(a.getApustuAnitza()); //23
 			}
 		}
 	}
