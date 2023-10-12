@@ -11,6 +11,7 @@ import javax.persistence.Persistence;
 import configuration.ConfigXML;
 import domain.Event;
 import domain.Question;
+import domain.Sport;
 
 public class TestDataAccess {
 	protected  EntityManager  db;
@@ -23,7 +24,6 @@ public class TestDataAccess {
 		
 		System.out.println("Creating TestDataAccess instance");
 
-		open();
 		
 	}
 
@@ -64,6 +64,17 @@ public class TestDataAccess {
 		} else 
 		return false;
     }
+	public boolean removeSport(String sport) {
+		System.out.println(">> DataAccessTest: removeSport");
+		Sport s = db.find(Sport.class,sport);
+		if (s!=null) {
+			db.getTransaction().begin();
+			db.remove(s);
+			db.getTransaction().commit();
+			return true;
+		} else 
+		return false;
+    }
 		
 		public Event addEventWithQuestion(String desc, Date d, String question, float qty) {
 			System.out.println(">> DataAccessTest: addEvent");
@@ -87,6 +98,20 @@ public class TestDataAccess {
 				return e.DoesQuestionExists(q.getQuestion());
 			} else 
 			return false;
+			
+		}
+		public Sport addSport(String aSport) {
+			System.out.println(">> DataAccessTest: addEvent");
+			Sport sport= new Sport(aSport);
+			try {
+				db.getTransaction().begin();
+				db.persist(sport);
+				db.getTransaction().commit();
+
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			return sport;
 			
 		}
 }
