@@ -1,6 +1,8 @@
 import java.util.Date;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.text.ParseException;
@@ -9,6 +11,7 @@ import java.text.SimpleDateFormat;
 import org.junit.Test;
 
 import dataAccess.DataAccess;
+import domain.Event;
 import test.dataAccess.TestDataAccess;
 
 public class GertaerakSortuDABTest {
@@ -59,99 +62,130 @@ public class GertaerakSortuDABTest {
 				} finally {
 					//Remove the created objects in the database (cascade removing)   
 					testDA.open();
-			        boolean b=testDA.removeEvent(eventDate, des);
+			        boolean b=testDA.eliminateEvent(eventDate, des);
 			        testDA.close();
-			     // System.out.println("Finally "+b); 
+				      //     System.out.println("Finally "+b); 
 				}
 				          
 			}
 		 
 			
-				/*
+				
 				@Test
-			//sut.createQuestion:  The event is null. The test fail
+			//sut.createQuestion:  insert the event in DB. There are not more events on that date
 				public void test2() {
-					try {
 						
-						//define paramaters
-						String eventText="event1";
-						String queryText="query1";
-						Float betMinimum=new Float(2);
+							//define paramaters
+							String deporte="Fútbol";
+							String des="Real Madrid-Barcelona";
+							boolean resp;
+													
+							SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+							Date eventDate=null;
 						
-						SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-						Date oneDate=null;;
-						try {
-							oneDate = sdf.parse("05/10/2022");
-						} catch (ParseException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}	
+					try {	
+							//invoke System Under Test (sut)  
+							sut.open(true);
+							resp =sut.gertaerakSortu(des, eventDate, deporte);
+							sut.close();
+							
+							//verify the results
+							assertTrue(resp);
+							
+							testDA.open();
+							Event e=testDA.getEvent(eventDate, des);
+							testDA.close();
 						
-						//invoke System Under Test (sut)  
-						Question q=sut.createQuestion(null, queryText, betMinimum);
-						
-						
-						//verify the results
-						assertTrue(q==null);
-						
-						
-					   } catch (QuestionAlreadyExist e) {
+							assertEquals(e.getDescription(),des);
+							assertEquals(e.getEventDate(), eventDate);
+							assertEquals(e.getSport().getIzena(), deporte);
+							
+							//the event is in DB
+							
+							testDA.open();
+							boolean existe = testDA.exiteEvento(eventDate, des);
+							testDA.close();
+							
+							assertTrue(existe);
+							
+					} catch (Exception e) {
 						// TODO Auto-generated catch block
-						// if the program goes to this point fail  
+						//e.printStackTrace();
 						fail();
-						} 
-					   }
+						
+						
+					}	finally {
+						//Remove the created objects in the database (cascade removing)   
+						testDA.open();
+				          boolean b=testDA.eliminateEvent(eventDate, des);
+				          testDA.close();
+				           System.out.println("Finally "+b);  
+					}
+
+					
+				
+				}
+					
+
 			@Test
-			//sut.createQuestion:  The question is null. The test fail
+			//sut.createQuestion:  trying to insert two equal events
 			public void test3() {
-				try {
 					
 					//define paramaters
-					String eventText="event1";
-					String queryText=null;
-					Float betMinimum=new Float(2);
-					
+					String deporte="Fútbol";
+					String des="Real Madrid-Barcelona";
+					boolean resp;
+					boolean resp2;
+						
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-					Date oneDate=null;;
+					Date eventDate=null;
+					
 					try {
-						oneDate = sdf.parse("05/10/2022");
+						eventDate = sdf.parse("30/10/2022");
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}	
-					
-					//configure the state of the system (create object in the dabatase)
-					testDA.open();
-					ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
-					testDA.close();			
-					
-					//invoke System Under Test (sut)  
-					Question q=sut.createQuestion(ev, queryText, betMinimum);
+					try {	
+					//invoke System Under Test (sut) two times 
+					sut.open(true);
+					resp=sut.gertaerakSortu(des, eventDate, deporte);
+					resp2=sut.gertaerakSortu(des, eventDate, deporte);
+					sut.close();
 					
 					
 					//verify the results
-					assertTrue(q==null);
+					assertTrue(resp);
+					assertTrue(resp2);
 					
-					
-					//q datubasean dago
 					testDA.open();
-					boolean exist = testDA.existQuestion(ev,q);
-						
-					assertTrue(!exist);
+					Event e=testDA.getEvent(eventDate, des);
 					testDA.close();
 					
-				   } catch (QuestionAlreadyExist e) {
-					// TODO Auto-generated catch block
-					// if the program goes to this point fail  
+					assertEquals(e.getDescription(), des);
+					assertEquals(e.getEventDate(), eventDate);
+					assertEquals(e.getSport().getIzena(), deporte);
+					
+					//check if the first event is in DB
+	
+					testDA.open();
+					boolean existe = testDA.exiteEvento(eventDate, des);
+					testDA.close();
+				
+				} catch (Exception e) {
 					fail();
-					} finally {
-						  //Remove the created objects in the database (cascade removing)   
-						testDA.open();
-				          boolean b=testDA.removeEvent(ev);
-				          testDA.close();
-				      //     System.out.println("Finally "+b);          
-				        }
-				   }
+				
+				} finally {
+					
+					//Remove the created objects in the database (cascade removing)   
+					testDA.open();
+			          boolean b=testDA.eliminateEvent(eventDate, des);
+			          testDA.close();
+			           System.out.println("Finally "+b);
+					
+				}
+				
+			}	
 				   
-				   */
+				   
 }
