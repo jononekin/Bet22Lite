@@ -84,7 +84,6 @@ public class EmaitzakIpiniDAW {
 
     @Test
     public void test3(){ //3F,10T,11F,18F
-        double valor = 2.2;
         Event e = bl.addEventWithQuestion("testEvent", new Date(), "testQuestion", 2);
         Quote q1 = bl.addQuotesTo(e.getQuestions().get(0), 2.0, "testQuote1");
         Quote q2 = bl.addQuotesTo(e.getQuestions().get(0), 3.0, "testQuote2");
