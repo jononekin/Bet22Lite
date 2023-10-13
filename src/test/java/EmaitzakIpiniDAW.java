@@ -1,24 +1,16 @@
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
-import javax.mail.Quota;
 import javax.persistence.EntityManager;
-import javax.swing.text.html.parser.Entity;
-import javax.xml.crypto.Data;
 
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import businessLogic.BLFacade;
-import configuration.ConfigXML;
-import test.dataAccess.*;
 import dataAccess.DataAccess;
 import domain.ApustuAnitza;
 import domain.Apustua;
@@ -26,9 +18,7 @@ import domain.Event;
 import domain.Question;
 import domain.Quote;
 import domain.Registered;
-import exceptions.EventFinished;
 import exceptions.EventNotFinished;
-import exceptions.QuestionAlreadyExist;
 import exceptions.QuoteAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 import test.dataAccess.TestDataAccess;
@@ -40,8 +30,7 @@ public class EmaitzakIpiniDAW {
     //additional operations needed to execute the test 
     static TestDataAccess testDA=new TestDataAccess();
     static TestFacadeImplementation bl = new TestFacadeImplementation();
-    private Event ev;
-    
+
    @Test
     public void test1(){
         Date d = new Date(2024, 11, 12);
@@ -64,56 +53,63 @@ public class EmaitzakIpiniDAW {
     }
     
     @Test
-    public void test2(){
-        Event e = bl.addEventWithQuestion("testEvent", new Date(), "testQuestion", 1);
-        //La pregunta creada del evento
-        Question q = e.getQuestions().get(0);
+    public void test2(){ //3F,10T, 11F,18T,22F
+        double valor = 2.2;
+        Event e = bl.addEventWithQuestion("testEvent", new Date(), "testQuestion", 2);
+        Quote q1 = bl.addQuotesTo(e.getQuestions().get(0), 2.0, "testQuote1");
+        Quote q2 = bl.addQuotesTo(e.getQuestions().get(0), 3.0, "testQuote2");
+        Quote q3 = bl.addQuotesTo(e.getQuestions().get(0), 4.0, "testQuote3");
+        Registered u = bl.addUser("testUser");
+        //Apustua apu = bl.addApuestaTo(q1, u, valor);
         
-        Registered u = sut.findUser(new Registered("admin", "123", 1234, true));
-        
-        //Crea el pronostico
-        Quote quote = new Quote();
-        quote.setQuestion(q);
-        quote.setQuote(2.0);
-        quote.setForecast("testQuote");
-        //añade el pronostico a la pregunta
-        
-        ApustuAnitza apa = new ApustuAnitza(u, 2.0);
-        Apustua ap = new Apustua(apa, quote);
-        
-        quote.addApustua(ap);
-        
-        q.addQuote(quote.getQuote(), quote.getForecast(), q);
-        
-        EntityManager emTest = Mockito.mock(EntityManager.class);
-        
-        Mockito.doReturn(quote).when(emTest.find(Quote.class, quote));
-        Mockito.doReturn(q).when(emTest.find(Question.class, quote.getQuestion()));
-        Mockito.verify(null)
-        
+        //Comprueba que todos los objetos se han creado
+        assertNotNull(e);
+        assertNotNull(q1);
+        assertNotNull(u);
+        //assertNotNull(apu);
         try {
-            Quote q = sut.storeQuote("test", 2.0, e.getQuestions().get(0));
-            
-            //Vector de apuestas del pronostico
-            Vector<Quote> quotes = new Vector<>();
-            quotes.addElement(q);
-            //añado apuestas al pronostico para testear la linea 22
-            assertTrue(sut.ApustuaEgin(u, quotes, 2.0, 2));
-            
-            sut.EmaitzakIpini(q);
-            Question qdb = sut.findQuestionFromQuote(q);
-            assertEquals(q.getForecast(), qdb.getResult());
-        } catch (QuoteAlreadyExist | EventNotFinished e1) {
-            fail("No debería de dar error");
-        } finally{
+            sut.EmaitzakIpini(q1);
+            // Busca la pregunta desde la base de datos DataAccess original
+            Question f = sut.findQuestionFromQuote(q1);
+            assertEquals(q1.getForecast(), f.getResult());
+        } catch (Exception ex) {
+            fail();
+        }finally{
+            //Borra el usuario y el evento creado (y todo lo demás en cascada)
             assertTrue(bl.removeEvent(e));
-            
+            assertTrue(bl.removeUser(u.getUsername()));
         }
+        
     }
 
     @Test
-    public void test3(){
-
+    public void test3(){ //3F,10T,11F,18F
+        double valor = 2.2;
+        Event e = bl.addEventWithQuestion("testEvent", new Date(), "testQuestion", 2);
+        Quote q1 = bl.addQuotesTo(e.getQuestions().get(0), 2.0, "testQuote1");
+        Quote q2 = bl.addQuotesTo(e.getQuestions().get(0), 3.0, "testQuote2");
+        Quote q3 = bl.addQuotesTo(e.getQuestions().get(0), 4.0, "testQuote3");
+        Registered u = bl.addUser("testUser");
+        //Apustua apu = bl.addApuestaTo(q1, u, valor);
+        
+        //Comprueba que todos los objetos se han creado
+        assertNotNull(e);
+        assertNotNull(q1);
+        assertNotNull(u);
+        //assertNotNull(apu);
+        try {
+            sut.EmaitzakIpini(q1);
+            // Busca la pregunta desde la base de datos DataAccess original
+            Question f = sut.findQuestionFromQuote(q1);
+            assertEquals(q1.getForecast(), f.getResult());
+        } catch (Exception ex) {
+            fail();
+        }finally{
+            //Borra el usuario y el evento creado (y todo lo demás en cascada)
+            assertTrue(bl.removeEvent(e));
+            assertTrue(bl.removeUser(u.getUsername()));
+        }
+        
     }
 
 

@@ -3,8 +3,16 @@ package test.businessLogic;
 
 import java.util.Date;
 
+import com.objectdb.o.QUD;
+import com.objectdb.o.CLN.r;
+
 import configuration.ConfigXML;
+import domain.ApustuAnitza;
+import domain.Apustua;
 import domain.Event;
+import domain.Question;
+import domain.Quote;
+import domain.Registered;
 import test.dataAccess.TestDataAccess;
 
 public class TestFacadeImplementation {
@@ -33,7 +41,53 @@ public class TestFacadeImplementation {
 			Event o=dbManagerTest.addEventWithQuestion(desc,d,q, qty);
 			dbManagerTest.close();
 			return o;
+		}
+		
 
+		public Registered addUser(String user){
+			Registered us = null;
+			dbManagerTest.open();
+			us = dbManagerTest.addUser(user);
+			dbManagerTest.close();
+			return us;
+		}
+		public Registered findUser(String user){
+			Registered us;
+			dbManagerTest.open();
+			us = dbManagerTest.findUser(user);
+			dbManagerTest.close();
+			return us;
+		}
+		public boolean removeUser(String user){
+			boolean remove = false;
+			dbManagerTest.open();
+			remove = dbManagerTest.removeUser(user);
+			dbManagerTest.close();
+			return remove;
+		}
+		public Apustua addApustua(double valor, Quote q){
+			Apustua ap = null;
+			dbManagerTest.open();
+			ap = dbManagerTest.addApustua(valor, q);
+			dbManagerTest.close();
+			return ap;
+		}
+		
+
+		public Quote addQuotesTo(Question question, double val, String forecast) {
+			Quote quo = null;
+			dbManagerTest.open();
+			quo = dbManagerTest.addQuoteTo(question, val, forecast);
+			dbManagerTest.close();
+			return quo;
 		}
 
+		
+		public Apustua addApuestaTo(Quote q, Registered u, double valor) {
+			Apustua apu = null;
+			dbManagerTest.open();
+			apu = dbManagerTest.addApuestaTo(q,u,valor);
+			dbManagerTest.close();
+			return apu;
+		}
 }

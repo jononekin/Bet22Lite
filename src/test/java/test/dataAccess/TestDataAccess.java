@@ -9,8 +9,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import configuration.ConfigXML;
+import domain.ApustuAnitza;
+import domain.Apustua;
 import domain.Event;
 import domain.Question;
+import domain.Quote;
+import domain.Registered;
 
 public class TestDataAccess {
 	protected  EntityManager  db;
@@ -65,29 +69,122 @@ public class TestDataAccess {
 		return false;
     }
 		
-		public Event addEventWithQuestion(String desc, Date d, String question, float qty) {
-			System.out.println(">> DataAccessTest: addEvent");
-			Event ev=null;
-				db.getTransaction().begin();
-				try {
-				    ev=new Event(desc,d);
-				    ev.addQuestion(question, qty);
-					db.persist(ev);
-					db.getTransaction().commit();
-				}
-				catch (Exception e){
-					e.printStackTrace();
-				}
-				return ev;
-	    }
-		public boolean existQuestion(Event ev,Question q) {
-			System.out.println(">> DataAccessTest: existQuestion");
-			Event e = db.find(Event.class, ev.getEventNumber());
-			if (e!=null) {
-				return e.DoesQuestionExists(q.getQuestion());
-			} else 
-			return false;
-			
+	public Event addEventWithQuestion(String desc, Date d, String question, float minQty) {
+		System.out.println(">> DataAccessTest: addEvent");
+		Event ev=null;
+			db.getTransaction().begin();
+			try {
+			    ev=new Event(desc,d);
+			    ev.addQuestion(question, minQty);
+				db.persist(ev);
+				db.getTransaction().commit();
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+			return ev;
+	}
+	public boolean existQuestion(Event ev,Question q) {
+		System.out.println(">> DataAccessTest: existQuestion");
+		Event e = db.find(Event.class, ev.getEventNumber());
+		if (e!=null) {
+			return e.DoesQuestionExists(q.getQuestion());
+		} else 
+		return false;	
+	}
+	public Registered addUser(String nom){
+		System.out.println(">> DataAccessTest: addUser");
+		db.getTransaction().begin();
+		Registered us = new Registered(nom, nom, 1234, false);
+		us.setDirukop(99999.0);
+		db.persist(us);
+		db.getTransaction().commit();
+		return us;
+	}
+	public boolean removeUser(String nom){
+		System.out.println(">> DataAccessTest: removeUser");
+		Registered u = db.find(Registered.class, nom);
+		if (u!=null) {
+			db.getTransaction().begin();
+			db.remove(u);
+			db.getTransaction().commit();
+			return true;
+		} return false;
+	}
+
+
+	public Apustua addApustua(double valor, Quote q) {
+		System.out.println(">> DataAccessTest: addEvent");
+		Apustua ap=null;
+		Registered u = findUser("userTest");
+			db.getTransaction().begin();
+			try {
+				ApustuAnitza apuA = new ApustuAnitza(u,valor);
+				ap = new Apustua(apuA,q);
+				q.addApustua(ap);
+			    db.persist(apuA);
+				db.persist(ap);
+				db.getTransaction().commit();
+			}
+			catch (Exception e){
+				e.printStackTrace();
+			}
+			return ap;
+	}
+
+
+	public Registered findUser(String nom) {
+		System.out.println(">> DataAccessTest: findUser");
+		Registered u = db.find(Registered.class, nom);
+		if (u!=null) {
+			return u;
+		} return null;
+		
+	}
+
+
+	public Quote addQuoteTo(Question question, double val, String forecast) {
+		System.out.println(">> DataAccessTest: addQuoteTo");
+		Quote qu = null;
+		try {
+			db.getTransaction().begin();
+			qu = new Quote(val, forecast);
+			Question q = db.find(Question.class, question.getQuestionNumber());
+			q.getQuotes().add(qu);
+			qu.setQuestion(q);
+			db.persist(qu);
+			db.getTransaction().commit();
+		} catch (Exception e) {
+			db.getTransaction().rollback();
+			e.printStackTrace();
 		}
+		
+		return qu;
+	}
+
+
+	public Apustua addApuestaTo(Quote q, Registered u, double valor) {
+		System.out.println(">> DataAccessTest: addApuestaTo");
+		Apustua apu = null;
+		try {
+			db.getTransaction().begin();
+			Quote quote = db.find(Quote.class, q.getQuoteNumber());
+			Registered user = db.find(Registered.class, u.getUsername());
+			ApustuAnitza apuA = new ApustuAnitza(user, valor);
+			apu = new Apustua(apuA, quote);
+			apuA.addApustua(apu);
+			apu.setApustuAnitza(apuA);
+			user.addApustuAnitza(apuA);
+			quote.addApustua(apu);
+			db.persist(apu);
+			db.persist(apuA);
+			db.getTransaction().commit();
+		} catch (Exception e) {
+			db.getTransaction().rollback();
+		}
+		return apu;
+	}
+
+	
 }
 
