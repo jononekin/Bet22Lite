@@ -11,7 +11,7 @@ import org.junit.Test;
 
 import businessLogic.BLFacadeImplementation;
 import configuration.ConfigXML;
-import dataAccess.DataAccessInterface;
+import test.dataAccess.*;
 import dataAccess.DataAccess;
 import domain.Event;
 import domain.Question;
