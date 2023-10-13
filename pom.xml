@@ -64,7 +64,7 @@
 		<sonar.organization>is2-2324</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.projectKey>is2-2324_bets</sonar.projectKey>
-		<sonar.login>0c536220ba799a68e101d553059a56bde0268c13</sonar.login>
+		<sonar.token>0c536220ba799a68e101d553059a56bde0268c13</sonar.token>
 	</properties>
 
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
