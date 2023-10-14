@@ -26,7 +26,6 @@ public class gertaerakSortuDABTest {
 	
 	public void test1() {
 		try {
-			System.out.println("Test 1");
 		String description="Real MadridGirona";
 		Date eventDate=new Date(2023,11,21);
 		String sport="Futbol";
