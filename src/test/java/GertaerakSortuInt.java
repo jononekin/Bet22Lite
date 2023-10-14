@@ -24,7 +24,7 @@ public class GertaerakSortuInt {
 	
 	
 	@Test
-	//sut.createQuestion:  The event has one question with a queryText. 
+	//sut.createQuestion:  false sport, false result 
 	public void test1() {
 		
 	
@@ -74,7 +74,7 @@ public class GertaerakSortuInt {
 			
 	
 	@Test
-	//sut.createQuestion:  The event has NOT one question with a queryText. 
+	//sut.createQuestion:  valid event. return true and valid date 
 	public void test2() {
 		
 		//define paramaters
@@ -119,7 +119,7 @@ public class GertaerakSortuInt {
 	}
 	
 	@Test
-	//sut.createQuestion:  The event has NOT one question with a queryText. 
+	//sut.createQuestion:  event finished
 	public void test3() {
 		
 			
@@ -164,7 +164,7 @@ public class GertaerakSortuInt {
 	}
 	
 	@Test
-	//sut.createQuestion:  The event has NOT one question with a queryText. 
+	//sut.createQuestion:  false existing event 
 	public void test4() {
 		
 		
