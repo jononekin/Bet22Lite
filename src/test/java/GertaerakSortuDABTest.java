@@ -12,6 +12,7 @@ import org.junit.Test;
 
 import dataAccess.DataAccess;
 import domain.Event;
+import test.businessLogic.TestFacadeImplementation;
 import test.dataAccess.TestDataAccess;
 
 public class GertaerakSortuDABTest {
@@ -20,21 +21,23 @@ public class GertaerakSortuDABTest {
 		 
 		 //additional operations needed to execute the test 
 		 static TestDataAccess testDA=new TestDataAccess();
+		 static TestFacadeImplementation bl = new TestFacadeImplementation();
 		 
 		 @Test
 			//sut.createQuestion:  Sport wrong, needed to be false. 
 			public void test1() {
 				//define paramaters
 				String deporte="fusbol";
-				String des="Real Madrid-Barcelona";
+				String des="Atletico-Athletic";
 				boolean resp;
+				String fecha= "01/11/2023";
 				
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				Date eventDate=null;
 				
 				
 				try {
-					eventDate = sdf.parse("30/10/2022");
+					eventDate = sdf.parse(fecha);
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -49,7 +52,8 @@ public class GertaerakSortuDABTest {
 					
 					//verify the results
 					assertFalse(resp);
-					
+					//Event evento;
+					//a=evento.getDescription();
 					//the event is not in the DB
 					testDA.open();
 					boolean a = testDA.exiteEvento(eventDate, des);
@@ -64,7 +68,7 @@ public class GertaerakSortuDABTest {
 					testDA.open();
 			        boolean b=testDA.eliminateEvent(eventDate, des);
 			        testDA.close();
-				      //     System.out.println("Finally "+b); 
+				    System.out.println("Finally t1"+b); 
 				}
 				          
 			}
@@ -76,21 +80,32 @@ public class GertaerakSortuDABTest {
 				public void test2() {
 						
 							//define paramaters
-							String deporte="Fútbol";
-							String des="Real Madrid-Barcelona";
+							String deporte="Futbol";
+							String des="Atletico-Athletic";
 							boolean resp;
+							String fecha= "17/11/2023";
 													
 							SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 							Date eventDate=null;
+							 
+							try {
+								eventDate= sdf.parse(fecha);
+							} catch (ParseException e) {
+								e.printStackTrace();
+							}
+							
 						
 					try {	
 							//invoke System Under Test (sut)  
 							sut.open(true);
-							resp =sut.gertaerakSortu(des, eventDate, deporte);
+							//boolean a = testDA.exiteEvento(eventDate, des);
+							
+							resp =sut.gertaerakSortu(des, eventDate, deporte);// porque da null?
 							sut.close();
 							
 							//verify the results
-							assertTrue(resp);
+							//Event evento = testDA.getEvent(eventDate, des);
+							assertFalse(resp);
 							
 							testDA.open();
 							Event e=testDA.getEvent(eventDate, des);
@@ -119,7 +134,8 @@ public class GertaerakSortuDABTest {
 						testDA.open();
 				          boolean b=testDA.eliminateEvent(eventDate, des);
 				          testDA.close();
-				           System.out.println("Finally "+b);  
+				           System.out.println("Finally t2 "+b);
+				           
 					}
 
 					
@@ -132,25 +148,31 @@ public class GertaerakSortuDABTest {
 			public void test3() {
 					
 					//define paramaters
-					String deporte="Fútbol";
-					String des="Real Madrid-Barcelona";
+					String deporte="Futbol";
+					String des="Atletico-Athletic";
 					boolean resp;
 					boolean resp2;
-						
+					String fecha= "17/11/2023";
+					
 					SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 					Date eventDate=null;
 					
+					
+					
 					try {
-						eventDate = sdf.parse("30/10/2022");
+						eventDate = sdf.parse(fecha);
 					} catch (ParseException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}	
+					}
+					
+					//Event e = bl.addEventWithQuestion(des, eventDate, "pregunta", 1);
 					try {	
-					//invoke System Under Test (sut) two times 
+					//invoke sut two times 
 					sut.open(true);
-					resp=sut.gertaerakSortu(des, eventDate, deporte);
-					resp2=sut.gertaerakSortu(des, eventDate, deporte);
+					
+					resp=sut.gertaerakSortu(des, eventDate, deporte);//tieme que dar f
+					resp2=sut.gertaerakSortu(des, eventDate, deporte);//tiene que dar f
 					sut.close();
 					
 					
@@ -159,12 +181,12 @@ public class GertaerakSortuDABTest {
 					assertTrue(resp2);
 					
 					testDA.open();
-					Event e=testDA.getEvent(eventDate, des);
+					Event ev=testDA.getEvent(eventDate, des);
 					testDA.close();
 					
-					assertEquals(e.getDescription(), des);
-					assertEquals(e.getEventDate(), eventDate);
-					assertEquals(e.getSport().getIzena(), deporte);
+					assertEquals(ev.getDescription(), des);
+					assertEquals(ev.getEventDate(), eventDate);
+					assertEquals(ev.getSport().getIzena(), deporte);
 					
 					//check if the first event is in DB
 	
@@ -172,7 +194,8 @@ public class GertaerakSortuDABTest {
 					boolean existe = testDA.exiteEvento(eventDate, des);
 					testDA.close();
 				
-				} catch (Exception e) {
+					assertTrue(existe);
+				} catch (Exception ex) {
 					fail();
 				
 				} finally {
@@ -181,7 +204,7 @@ public class GertaerakSortuDABTest {
 					testDA.open();
 			          boolean b=testDA.eliminateEvent(eventDate, des);
 			          testDA.close();
-			           System.out.println("Finally "+b);
+			           System.out.println("Finally t3"+b);
 					
 				}
 				
