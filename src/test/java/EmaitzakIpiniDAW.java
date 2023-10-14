@@ -1,5 +1,7 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
@@ -60,13 +62,13 @@ public class EmaitzakIpiniDAW {
         Quote q2 = bl.addQuotesTo(e.getQuestions().get(0), 3.0, "testQuote2");
         Quote q3 = bl.addQuotesTo(e.getQuestions().get(0), 4.0, "testQuote3");
         Registered u = bl.addUser("testUser");
-        //Apustua apu = bl.addApuestaTo(q1, u, valor);
+        Apustua apu = bl.addApuestaTo(q1, u, valor);
         
         //Comprueba que todos los objetos se han creado
         assertNotNull(e);
         assertNotNull(q1);
         assertNotNull(u);
-        //assertNotNull(apu);
+        assertNotNull(apu);
         try {
             sut.EmaitzakIpini(q1);
             // Busca la pregunta desde la base de datos DataAccess original
@@ -84,29 +86,56 @@ public class EmaitzakIpiniDAW {
 
     @Test
     public void test3(){ //3F,10T,11F,18F
+        double valor = 2.2;
         Event e = bl.addEventWithQuestion("testEvent", new Date(), "testQuestion", 2);
         Quote q1 = bl.addQuotesTo(e.getQuestions().get(0), 2.0, "testQuote1");
         Quote q2 = bl.addQuotesTo(e.getQuestions().get(0), 3.0, "testQuote2");
         Quote q3 = bl.addQuotesTo(e.getQuestions().get(0), 4.0, "testQuote3");
         Registered u = bl.addUser("testUser");
-        //Apustua apu = bl.addApuestaTo(q1, u, valor);
-        
+        Apustua apu = bl.addApuestaTo(q1, u, valor);
+        Apustua apu2 = bl.addApuestaTo(q2, u, valor);
+        Apustua apu3 = bl.addApuestaTo(q3, u, valor);
+        Apustua apu4 = bl.addApuestaTo(q1, u, valor);
         //Comprueba que todos los objetos se han creado
         assertNotNull(e);
         assertNotNull(q1);
         assertNotNull(u);
-        //assertNotNull(apu);
+        assertNotNull(apu);
         try {
             sut.EmaitzakIpini(q1);
             // Busca la pregunta desde la base de datos DataAccess original
             Question f = sut.findQuestionFromQuote(q1);
+            // Comprueba que se ha cambiado su atributo de pronostico ganador
             assertEquals(q1.getForecast(), f.getResult());
+            
+            boolean same = false;
+            for (Quote quote : f.getQuotes()) {
+                if (quote.equals(q1)) {
+                    same = true;
+                    continue;        
+                }
+                for (Apustua apuesta : quote.getApustuak()) {
+                    if (apuesta.getKuota().equals(q1)) {
+                        assertEquals("irabazita",apuesta.getEgoera());
+                        assertEquals("irabazita",apuesta.getApustuAnitza().getEgoera());
+                        System.out.println("apuesta ganadora");
+                    } else {
+                        assertEquals("galduta",apuesta.getEgoera());
+                        assertEquals("galduta",apuesta.getApustuAnitza().getEgoera());
+                    }
+                }
+                
+            }
+            assertTrue(same);
+            
+            
         } catch (Exception ex) {
             fail();
         }finally{
             //Borra el usuario y el evento creado (y todo lo demás en cascada)
             assertTrue(bl.removeEvent(e));
             assertTrue(bl.removeUser(u.getUsername()));
+
         }
         
     }

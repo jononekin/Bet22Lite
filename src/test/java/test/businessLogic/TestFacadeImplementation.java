@@ -1,13 +1,6 @@
 package test.businessLogic;
-
-
 import java.util.Date;
-
-import com.objectdb.o.QUD;
-import com.objectdb.o.CLN.r;
-
 import configuration.ConfigXML;
-import domain.ApustuAnitza;
 import domain.Apustua;
 import domain.Event;
 import domain.Question;
