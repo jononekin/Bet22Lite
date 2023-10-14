@@ -50,7 +50,6 @@ public class EmaitzakIpiniDAW {
             assertTrue(true);
         } finally{
             assertTrue(bl.removeEvent(e));
-            
         } 
     }
     
@@ -101,6 +100,7 @@ public class EmaitzakIpiniDAW {
         assertNotNull(q1);
         assertNotNull(u);
         assertNotNull(apu);
+
         try {
             sut.EmaitzakIpini(q1);
             // Busca la pregunta desde la base de datos DataAccess original
@@ -111,14 +111,13 @@ public class EmaitzakIpiniDAW {
             boolean same = false;
             for (Quote quote : f.getQuotes()) {
                 if (quote.equals(q1)) {
-                    same = true;
-                    continue;        
+                    same = true;     
                 }
                 for (Apustua apuesta : quote.getApustuak()) {
                     if (apuesta.getKuota().equals(q1)) {
                         assertEquals("irabazita",apuesta.getEgoera());
                         assertEquals("irabazita",apuesta.getApustuAnitza().getEgoera());
-                        System.out.println("apuesta ganadora");
+                        
                     } else {
                         assertEquals("galduta",apuesta.getEgoera());
                         assertEquals("galduta",apuesta.getApustuAnitza().getEgoera());

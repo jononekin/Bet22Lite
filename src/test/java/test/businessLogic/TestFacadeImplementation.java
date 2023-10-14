@@ -19,7 +19,9 @@ public class TestFacadeImplementation {
 			dbManagerTest=new TestDataAccess(); 
 			dbManagerTest.close();
 		}
-		
+		public void close(){
+			dbManagerTest.close();
+		}
 		 
 		public boolean removeEvent(Event ev) {
 			dbManagerTest.open();
@@ -38,10 +40,13 @@ public class TestFacadeImplementation {
 		
 
 		public Registered addUser(String user){
-			Registered us = null;
-			dbManagerTest.open();
-			us = dbManagerTest.addUser(user);
-			dbManagerTest.close();
+			Registered us = findUser(user);
+			if(us == null){
+				dbManagerTest.open();
+				us = dbManagerTest.addUser(user);
+				dbManagerTest.close();
+			}
+
 			return us;
 		}
 		public Registered findUser(String user){
