@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TeamRenderer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Bet22Lite</a> &gt; <a href="index.source.html" class="el_package">domain</a> &gt; <span class="el_source">TeamRenderer.java</span></div><h1>TeamRenderer.java</h1><pre class="source lang-java linenums">package domain;
+
+import java.awt.Component;
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+
+import businessLogic.BLFacade;
+import gui.MainGUI;
+
+public class TeamRenderer extends JLabel implements ListCellRenderer&lt;Team&gt;{
+
+<span class="nc" id="L16">	private BLFacade businessLogic = MainGUI.getBusinessLogic();</span>
+
+<span class="nc" id="L18">	 public TeamRenderer() {</span>
+<span class="nc" id="L19">		  setOpaque(true);</span>
+<span class="nc" id="L20">	    }</span>
+	 
+	    public Component getListCellRendererComponent(JList&lt;? extends Team&gt; list, Team team, int index, boolean isSelected, boolean cellHasFocus) {
+	 
+	    	  	
+<span class="nc" id="L25">	    	 ImageIcon imageIcon = new ImageIcon(&quot;.\\src/main/resources\\Equipos\\&quot;+team.getIzena()+&quot;.png&quot;); // load the image to a imageIcon</span>
+<span class="nc" id="L26">		     Image image = imageIcon.getImage(); // transform it </span>
+<span class="nc" id="L27">		     Image newimg = image.getScaledInstance(90, 90, Image.SCALE_SMOOTH); // scale it the smooth way  </span>
+<span class="nc" id="L28">		     imageIcon = new ImageIcon(newimg);</span>
+<span class="nc" id="L29">	         setIcon(imageIcon);</span>
+<span class="nc" id="L30">	         setText(team.getIzena());</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">	         if(isSelected) {</span>
+<span class="nc" id="L32">	        		setBackground(list.getSelectionBackground().GRAY);</span>
+<span class="nc" id="L33">		            setForeground(list.getSelectionForeground().WHITE);</span>
+	        }else {
+<span class="nc" id="L35">	        	setBackground(list.getSelectionBackground());</span>
+<span class="nc" id="L36">	            setForeground(list.getSelectionForeground());</span>
+	        }
+	         
+<span class="nc" id="L39">	        return this;</span>
+	    }
+	    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

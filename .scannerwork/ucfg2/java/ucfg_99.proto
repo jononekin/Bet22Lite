@@ -1,0 +1,88 @@
+
+xtest.dataAccess.TestDataAccess#addEventWithQuestion(Ljava/lang/String;Ljava/util/Date;Ljava/lang/String;F)Ldomain/Event;d
+Z/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/test/java/test/dataAccess/TestDataAccess.javaD D(#"8*‡
+6I I((X
+V
+I I((
+evdomain.Event"__id*0
+
+__unknown_file (
+
+%2domain.Event˜•
+J J(%
+%4domain.Question">domain.Event#addQuestion(Ljava/lang/String;D)Ldomain/Question;*0
+
+__unknown_file (
+
+evdomain.Event*:
+
+__unknown_file (
+
+questionjava.lang.String*"
+
+__unknown_file (
+""2 addQuestion(Ljava/lang/String;D)*
+1*‘
+7I I(.,
+I I(
+%2domain.Event"domain.EventÌ
+É
+I I((
+%3"Rdomain.Event#<init>(Ljava/lang/String;Ljava/util/Date;Ldomain/Team;Ldomain/Team;)V*0
+
+__unknown_file (
+
+%2domain.Event*6
+
+__unknown_file (
+
+descjava.lang.String*1
+
+__unknown_file (
+
+djava.util.Date*"
+
+__unknown_file (
+""*"
+
+__unknown_file (
+""*
+6*’
+8E E(	Q
+O
+E E(
+%0java.io.PrintStream"__id*"
+
+__unknown_file (
+""ÞÛ
+E E(4
+
+%1void"0java.io.PrintStream#println(Ljava/lang/String;)V*7
+
+__unknown_file (
+
+%0java.io.PrintStream*;
+
+__unknown_file (
+>> DataAccessTest: addEvent2println(Ljava/lang/String;)J
+H
+F F(
+evdomain.Event"__id*"
+
+__unknown_file (
+""*
+7*/
+1Q Q(" 
+Q Q(
+
+evdomain.Event:$
+D$ D(0
+descjava.lang.String:
+D1 D(8
+djava.util.Date:(
+D9 D(I
+questionjava.lang.String: 
+
+__unknown_file (
+""B" 
+test.dataAccess.TestDataAccessH

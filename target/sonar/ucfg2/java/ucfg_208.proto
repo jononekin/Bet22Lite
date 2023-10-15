@@ -1,0 +1,39 @@
+
+)domain.Event#toString()Ljava/lang/String;R
+H/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/domain/Event.java] ]("1*ð
+1^	 ^(j
+h
+^	 ^(
+%0java.lang.Integer"__id*=
+
+__unknown_file (!*
+domain.Event"
+eventNumberh
+f
+^	 ^(
+%1java.lang.String"__concat*%
+^	 ^(
+
+%0java.lang.Integer*
+^ ^(
+;i
+g
+^ ^($
+%2java.lang.String"__id*=
+
+__unknown_file (!*
+domain.Event"
+descriptionz
+x
+^	 ^($
+%3java.lang.String"__concat*$
+^	 ^(
+
+%1java.lang.String*$
+^ ^($
+
+%2java.lang.String"$
+^ ^(%
+
+%3java.lang.StringB
+domain.EventH

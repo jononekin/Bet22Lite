@@ -1,0 +1,19 @@
+
+FdataAccess.DataAccess#findUser(Ldomain/Registered;)Ldomain/Registered;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.javaù ù("1*Ê
+1
+ú	 ú(¢Ÿ
+
+ú# ú(5
+%0java.lang.String"1domain.Registered#getUsername()Ljava/lang/String;*7
+
+__unknown_file (
+
+userdomain.Registered2getUsername()"
+
+ú ú(7
+"":'
+
+ù ù(+
+userdomain.RegisteredB
+dataAccess.DataAccessH

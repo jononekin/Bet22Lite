@@ -1,0 +1,68 @@
+
+(domain.Sport#equals(Ljava/lang/Object;)ZR
+H/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/domain/Sport.javaJ J("startingBlock*!
+2M
+ M("
+M M(
+""*r
+3K K([
+Y
+K K(
+spdomain.Sport"__id*3
+
+__unknown_file (
+
+ojava.lang.Object*
+2
+1*€
+startingBlockJ J( ˆ
+…
+I I(
+
+%3"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*3
+
+__unknown_file (
+
+ojava.lang.ObjectU
+S
+J J(
+ojava.lang.Object"__annotation*"
+
+__unknown_file (
+
+%3*
+3*ì
+1O	 O(c
+a
+O	 O(
+%0java.lang.String"__id*7
+
+__unknown_file (*
+domain.Sport"
+izenaŽ‹
+O O((
+%1java.lang.String")domain.Sport#getIzena()Ljava/lang/String;*0
+
+__unknown_file (
+
+spdomain.Sport2
+getIzena()ÒÏ
+O	 O()
+%2boolean",java.lang.String#equals(Ljava/lang/Object;)Z*4
+
+__unknown_file (
+
+%0java.lang.String*4
+
+__unknown_file (
+
+%1java.lang.String2equals(Ljava/lang/Object;)"
+O O(*
+"":!
+J J(
+ojava.lang.ObjectB
+domain.SportHP

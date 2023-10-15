@@ -1,0 +1,4 @@
+dataAccess.DataAccess#findSport(Ldomain/Event;)Ldomain/Sport;
+==
+getSport domain.Event#getSport()Ldomain/Sport;
+getEventNumber domain.Event#getEventNumber()Ljava/lang/Integer;

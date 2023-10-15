@@ -1,0 +1,26 @@
+
+KdataAccess.DataAccess#findTransakzioak(Ldomain/Registered;)Ljava/util/List;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.java” ”(*"1*é
+1
+•! •(#Ÿœ
+
+•; •(J
+%0java.lang.String"1domain.Registered#getUsername()Ljava/lang/String;*4
+
+__unknown_file (
+
+udomain.Registered2getUsername()Ÿœ
+
+— —((
+%1java.lang.String"1domain.Registered#getUsername()Ljava/lang/String;*4
+
+__unknown_file (
+
+udomain.Registered2getUsername()"
+
+˜ ˜( 
+"":$
+
+”+ ”(7
+udomain.RegisteredB
+dataAccess.DataAccessH

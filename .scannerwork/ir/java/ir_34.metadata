@@ -1,0 +1,9 @@
+dataAccess.DataAccess#rankingLortu()Ljava/util/List;
+java.util.ArrayList#<init>()V
+java.util.ArrayList#instance-init#
+==
+getIrabazitakoa domain.Registered#getIrabazitakoa()Ljava/lang/Double;
+add java.util.List#add(ILjava/lang/Object;)V
+isEmpty java.util.List#isEmpty()Z
+get java.util.List#get(I)Ljava/lang/Object;
+size java.util.List#size()I

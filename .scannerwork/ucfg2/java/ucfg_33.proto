@@ -1,0 +1,42 @@
+
+LdataAccess.DataAccess#saldoaBistaratu(Ldomain/Registered;)Ljava/lang/String;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.javaü ü("1*ê
+1
+ý ý(!Ÿœ
+
+ý9 ý(H
+%0java.lang.String"1domain.Registered#getUsername()Ljava/lang/String;*4
+
+__unknown_file (
+
+udomain.Registered2getUsername()R
+P
+
+ý ý(J
+regdomain.Registered"__id*"
+
+__unknown_file (
+""Ÿœ
+
+þ	 þ(
+%1java.lang.Double"0domain.Registered#getDirukop()Ljava/lang/Double;*6
+
+__unknown_file (
+
+regdomain.Registered2getDirukop()˜•
+
+þ	 þ($
+%2java.lang.String"-java.lang.Double#toString()Ljava/lang/String;*4
+
+__unknown_file (
+
+%1java.lang.Double2
+toString()"&
+
+þ þ(%
+
+%2java.lang.String:$
+
+ü ü(+
+udomain.RegisteredB
+dataAccess.DataAccessH

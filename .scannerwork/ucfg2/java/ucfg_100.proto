@@ -1,0 +1,62 @@
+
+Ntest.dataAccess.TestDataAccess#existQuestion(Ldomain/Event;Ldomain/Question;)Zd
+Z/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/test/java/test/dataAccess/TestDataAccess.javaS S("3*¡
+2W W(™–
+W  W(/
+%3java.lang.String"/domain.Question#getQuestion()Ljava/lang/String;*2
+
+__unknown_file (
+
+qdomain.Question2getQuestion()áÞ
+W W(0
+%4boolean"4domain.Event#DoesQuestionExists(Ljava/lang/String;)Z*/
+
+__unknown_file (
+
+edomain.Event*4
+
+__unknown_file (
+
+%3java.lang.String2&DoesQuestionExists(Ljava/lang/String;)"
+W W(1
+""*¸
+3T T(	Q
+O
+T T(
+%0java.io.PrintStream"__id*"
+
+__unknown_file (
+""ãà
+T T(9
+
+%1void"0java.io.PrintStream#println(Ljava/lang/String;)V*7
+
+__unknown_file (
+
+%0java.io.PrintStream*@
+
+__unknown_file ($"
+ >> DataAccessTest: existQuestion2println(Ljava/lang/String;)œ™
+U" U(5
+%2java.lang.Integer"0domain.Event#getEventNumber()Ljava/lang/Integer;*0
+
+__unknown_file (
+
+evdomain.Event2getEventNumber()I
+G
+U U(7
+edomain.Event"__id*"
+
+__unknown_file (
+""*
+2
+1*!
+1Y
+ Y("
+Y Y(
+"":
+S S((
+evdomain.Event: 
+S( S(2
+qdomain.QuestionB" 
+test.dataAccess.TestDataAccessHP

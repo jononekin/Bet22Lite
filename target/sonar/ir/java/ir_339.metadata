@@ -1,0 +1,3 @@
+domain.Registered#toString()Ljava/lang/String;
+==
+getUsername domain.Registered#getUsername()Ljava/lang/String;

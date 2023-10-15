@@ -1,0 +1,35 @@
+
+=dataAccess.DataAccess#findSport(Ldomain/Event;)Ldomain/Sport;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.javaå å("1*¨
+1
+ç ç(ùö
+
+ç" ç(4
+%0java.lang.Integer"0domain.Event#getEventNumber()Ljava/lang/Integer;*/
+
+__unknown_file (
+
+qdomain.Event2getEventNumber()L
+J
+
+ç ç(6
+spdomain.Event"__id*"
+
+__unknown_file (
+""àÖ
+
+é	 é(
+%1domain.Sport"%domain.Event#getSport()Ldomain/Sport;*0
+
+__unknown_file (
+
+spdomain.Event2
+getSport()""
+
+é é(
+
+%1domain.Sport:
+
+å å(
+qdomain.EventB
+dataAccess.DataAccessH

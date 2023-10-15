@@ -1,0 +1,10 @@
+dataAccess.DataAccess#jarraitu(Ldomain/Registered;Ldomain/Registered;Ljava/lang/Double;)Z
+domain.Jarraitzailea#<init>(Ldomain/Registered;Ldomain/Registered;)V
+domain.Jarraitzailea#instance-init#
+==
+setDiruLimitea domain.Registered#setDiruLimitea(Ljava/lang/Double;)V
+getJarraitutakoLista domain.Registered#getJarraitutakoLista()Ljava/util/Vector;
+getUsername domain.Registered#getUsername()Ljava/lang/String;
+addJarraitutako domain.Registered#addJarraitutako(Ldomain/Jarraitzailea;)V
+contains java.util.Vector#contains(Ljava/lang/Object;)Z
+addJarraitzailea domain.Registered#addJarraitzailea(Ldomain/Jarraitzailea;)V
