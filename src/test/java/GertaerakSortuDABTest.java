@@ -100,7 +100,7 @@ public class GertaerakSortuDABTest {
 							sut.open(true);
 							//boolean a = testDA.exiteEvento(eventDate, des);
 							
-							resp =sut.gertaerakSortu(des, eventDate, deporte);// porque da null?
+							resp =sut.gertaerakSortu(des, eventDate, deporte);
 							sut.close();
 							
 							//verify the results

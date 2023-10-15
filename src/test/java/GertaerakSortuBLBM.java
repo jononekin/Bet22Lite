@@ -17,7 +17,7 @@ import businessLogic.BLFacadeImplementation;
 import dataAccess.DataAccess;
 import exceptions.EventFinished;
 
-public class GertaerakSortuInt {
+public class GertaerakSortuBLBM {
 	DataAccess dataAccess = Mockito.mock((DataAccess.class));
 	BLFacade sut=new BLFacadeImplementation(dataAccess);
 
