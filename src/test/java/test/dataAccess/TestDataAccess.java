@@ -17,6 +17,7 @@ import domain.Event;
 import domain.Question;
 import domain.Quote;
 import domain.Registered;
+import domain.Sport;
 
 public class TestDataAccess {
 	protected EntityManager db;
@@ -106,6 +107,33 @@ public class TestDataAccess {
 			e.printStackTrace();
 		}
 		return ev;
+	}
+
+	public boolean removeSport(String sport) {
+		System.out.println(">> DataAccessTest: removeSport");
+		Sport s = db.find(Sport.class, sport);
+		if (s != null) {
+			db.getTransaction().begin();
+			db.remove(s);
+			db.getTransaction().commit();
+			return true;
+		} else
+			return false;
+	}
+
+	public Sport addSport(String aSport) {
+		System.out.println(">> DataAccessTest: addEvent");
+		Sport sport = new Sport(aSport);
+		try {
+			db.getTransaction().begin();
+			db.persist(sport);
+			db.getTransaction().commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return sport;
+
 	}
 
 	public boolean existQuestion(Event ev, Question q) {
