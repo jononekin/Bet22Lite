@@ -45,7 +45,7 @@ public class EmaitzakIpiniDAB2 {
 		try {
 			sut.open(false);
 			sut.EmaitzakIpini(q);
-			sut.findQuestionFromQuote(q)
+			sut.findQuestionFromQuote(q);
 			Question question = sut.findQuestionFromQuote(q);
 			assertNotNull(question);
 			assertEquals(e.getQuestions().get(0).getQuestionNumber(), question.getQuestionNumber());
