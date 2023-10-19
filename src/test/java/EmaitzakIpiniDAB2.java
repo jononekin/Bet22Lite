@@ -10,6 +10,7 @@ import java.util.Date;
 import org.junit.Test;
 import businessLogic.BLFacade;
 import businessLogic.BLFacadeImplementation;
+import dataAccess.DataAccessEmaitzakIpini;
 import domain.Apustua;
 import domain.Event;
 import domain.Question;
