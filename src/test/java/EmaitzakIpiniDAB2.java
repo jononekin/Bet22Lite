@@ -21,7 +21,7 @@ import test.businessLogic.TestFacadeImplementation;
 public class EmaitzakIpiniDAB2 {
     
     //sut:system under test
-	static BLFacade sut=new BLFacadeImplementation();
+	static DataAccessEmaitzakIpini sut=new DataAccessEmaitzakIpini(true);
 	 
 	 //additional operations needed to execute the test 
 	static TestFacadeImplementation testDA=new TestFacadeImplementation();
@@ -43,7 +43,9 @@ public class EmaitzakIpiniDAB2 {
 		Quote q = testDA.addQuotesTo(e.getQuestions().get(0), 1, "testQuote");
 		
 		try {
+			sut.open(false);
 			sut.EmaitzakIpini(q);
+			sut.findQuestionFromQuote(q)
 			Question question = sut.findQuestionFromQuote(q);
 			assertNotNull(question);
 			assertEquals(e.getQuestions().get(0).getQuestionNumber(), question.getQuestionNumber());
@@ -53,6 +55,7 @@ public class EmaitzakIpiniDAB2 {
 			fail("No debería de dar error");
 		} finally{
 			testDA.removeEvent(e);
+			sut.close();
 		}
 	}
 }

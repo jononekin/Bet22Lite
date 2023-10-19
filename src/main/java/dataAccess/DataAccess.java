@@ -734,6 +734,7 @@ public void open(boolean initializeMode){
 					b = false;
 				}
 			}
+			
 			if(b) {
 				String[] taldeak = description.split("-");
 				Team lokala = new Team(taldeak[0]);
