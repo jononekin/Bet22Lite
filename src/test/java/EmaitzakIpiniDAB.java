@@ -30,7 +30,7 @@ public class EmaitzakIpiniDAB {
 	// @Test
 	// public void test1(){
 	// 	try {
-	// 		sut.EmaitzakIpini(null);
+	// 		sut.emaitzakIpini(null);
 	// 		fail("No debería de ejecutar con parámetro null");
 	// 	} catch (Exception e) {
 	// 		assertTrue(true);
@@ -43,7 +43,7 @@ public class EmaitzakIpiniDAB {
 		Quote q = testDA.addQuotesTo(e.getQuestions().get(0), 1, "testQuote");
 		
 		try {
-			sut.EmaitzakIpini(q);
+			sut.emaitzakIpini(q);
 			Question question = sut.findQuestionFromQuote(q);
 			assertNotNull(question);
 			assertEquals(e.getQuestions().get(0).getQuestionNumber(), question.getQuestionNumber());

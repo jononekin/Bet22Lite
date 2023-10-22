@@ -97,9 +97,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @return collection of events
 	 */
     @WebMethod	
-	public Vector<Event> getEvents(Date date)  {
+	public List<Event> getEvents(Date date)  {
 		dbManager.open(false);
-		Vector<Event>  events=dbManager.getEvents(date);
+		List<Event>  events=dbManager.getEvents(date);
 		dbManager.close();
 		return events;
 	}
@@ -111,9 +111,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	@WebMethod public Vector<Date> getEventsMonth(Date date) {
+	@WebMethod public List<Date> getEventsMonth(Date date) {
 		dbManager.open(false);
-		Vector<Date>  dates=dbManager.getEventsMonth(date);
+		List<Date>  dates=dbManager.getEventsMonth(date);
 		dbManager.close();
 		return dates;
 	}
@@ -238,9 +238,9 @@ public class BLFacadeImplementation  implements BLFacade {
     	return l; 
     }
     @WebMethod	
-    public void EmaitzakIpini(Quote quote) throws EventNotFinished {
+    public void emaitzakIpini(Quote quote) throws EventNotFinished {
     	dbManager.open(false);
-    	dbManager.EmaitzakIpini(quote);
+    	dbManager.emaitzakIpini(quote);
     	dbManager.close();
     }
     @WebMethod	

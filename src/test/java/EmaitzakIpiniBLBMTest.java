@@ -28,8 +28,8 @@ public class EmaitzakIpiniBLBMTest {
     public void test1(){
         try {
             
-            Mockito.doThrow(new IllegalArgumentException()).when(daMock).EmaitzakIpini(null);
-            sut.EmaitzakIpini(null);
+            Mockito.doThrow(new IllegalArgumentException()).when(daMock).emaitzakIpini(null);
+            sut.emaitzakIpini(null);
             fail("No debería de ejecutar con parámetro null");
         } catch (Exception e) {
             assertTrue(true);
@@ -40,12 +40,12 @@ public class EmaitzakIpiniBLBMTest {
     public void test2(){
         Quote q = new Quote(2.0, "cuotaNoBD");
         try {
-                Mockito.doThrow(new NullPointerException()).when(daMock).EmaitzakIpini(q);
+                Mockito.doThrow(new NullPointerException()).when(daMock).emaitzakIpini(q);
                 ArgumentCaptor<Quote> argument = ArgumentCaptor.forClass(Quote.class);
                 assertThrows(NullPointerException.class,
                 ()->{
-                    sut.EmaitzakIpini(q);
-                    Mockito.verify(daMock, Mockito.times(1)).EmaitzakIpini(argument.capture());
+                    sut.emaitzakIpini(q);
+                    Mockito.verify(daMock, Mockito.times(1)).emaitzakIpini(argument.capture());
                     assertEquals(argument.getValue().getForecast(), q.getForecast());
                     
                 });
@@ -58,12 +58,12 @@ public class EmaitzakIpiniBLBMTest {
         Quote q = new Quote(2.0, "cuotaEnBDFechaFutura");
         DataAccess spy = spy(new DataAccess());
         try {
-                Mockito.doThrow(new EventNotFinished()).when(daMock).EmaitzakIpini(q);
+                Mockito.doThrow(new EventNotFinished()).when(daMock).emaitzakIpini(q);
                 ArgumentCaptor<Quote> argument = ArgumentCaptor.forClass(Quote.class);
                 assertThrows(EventNotFinished.class,
                 ()->{
-                    sut.EmaitzakIpini(q);
-                    Mockito.verify(daMock, Mockito.times(1)).EmaitzakIpini(argument.capture());
+                    sut.emaitzakIpini(q);
+                    Mockito.verify(daMock, Mockito.times(1)).emaitzakIpini(argument.capture());
                     assertEquals(argument.getValue().getForecast(), q.getForecast());
                     
                 });
