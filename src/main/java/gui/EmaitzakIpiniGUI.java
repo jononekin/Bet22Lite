@@ -52,7 +52,7 @@ public class EmaitzakIpiniGUI extends JFrame{
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	
-	private List<Date> datesWithEventsCurrentMonth = new ArrayList(null)<Date>();
+	private List<Date> datesWithEventsCurrentMonth = new ArrayList<>();
 	private final JLabel jLabelQuestion = new JLabel(); //$NON-NLS-1$ //$NON-NLS-2$
 	private final JComboBox<Question> jComboBoxQuestions = new JComboBox<Question>();
 	DefaultComboBoxModel<Question> modelQuestions = new DefaultComboBoxModel<Question>();
