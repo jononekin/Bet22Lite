@@ -1,3 +1,4 @@
+package dataAccess;
 
 
 import java.util.ArrayList;
@@ -690,5 +691,9 @@ public class DataAccessEmaitzakIpini  {
 		Transaction t = new Transaction(r, d, new Date(), "ApustuaIrabazi"); 
 		db.persist(t);
 		db.getTransaction().commit();
+	}
+	public Question findQuestionFromQuote(Quote q){
+		Quote quo = db.find(Quote.class, q.getQuoteNumber());
+		return quo.getQuestion(); 
 	}
 }
