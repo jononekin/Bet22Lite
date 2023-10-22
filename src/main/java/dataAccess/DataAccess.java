@@ -726,7 +726,7 @@ public void open(boolean initializeMode){
 		db.persist(ad);
 		db.getTransaction().commit();
 	}
-	
+	//olarizu
 	public boolean gertaerakSortu(String description,Date eventDate, String sport) {
 		boolean b = true;
 		db.getTransaction().begin();
