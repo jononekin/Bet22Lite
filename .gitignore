@@ -206,3 +206,4 @@ README.html
 .exercism
 src/main/resources/bets.temp
 src/main/resources/bets.temp$
+src/main/java/dataAccess/DataAccessEmaitzakIpini.java
