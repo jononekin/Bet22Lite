@@ -207,3 +207,4 @@ README.html
 src/main/resources/bets.temp
 src/main/resources/bets.temp$
 src/main/java/dataAccess/DataAccessEmaitzakIpini.java
+src/test/java/EmaitzakIpiniDAB2.java
