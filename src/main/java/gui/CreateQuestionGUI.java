@@ -2,6 +2,7 @@ package gui;
 
 import java.text.DateFormat;
 import java.util.*;
+import java.util.List;
 
 import javax.swing.*;
 
@@ -42,7 +43,7 @@ public class CreateQuestionGUI extends JFrame {
 	private JLabel jLabelMsg = new JLabel();
 	private JLabel jLabelError = new JLabel();
 	
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private List<Date> datesWithEventsCurrentMonth = new Vector<Date>();
 
 	public CreateQuestionGUI(Vector<domain.Event> v) {
 		try {
@@ -159,7 +160,7 @@ public class CreateQuestionGUI extends JFrame {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						List<domain.Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
@@ -189,7 +190,7 @@ public class CreateQuestionGUI extends JFrame {
 	}
 
 	
-public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWithEventsCurrentMonth) {
+public static void paintDaysWithEvents(JCalendar jCalendar,List<Date> datesWithEventsCurrentMonth2) {
 		// For each day with events in current month, the background color for that day is changed.
 
 		
@@ -208,7 +209,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			offset += 5;
 		
 		
-	 	for (Date d:datesWithEventsCurrentMonth){
+	 	for (Date d:datesWithEventsCurrentMonth2){
 
 	 		calendar.setTime(d);
 	 		System.out.println(d);

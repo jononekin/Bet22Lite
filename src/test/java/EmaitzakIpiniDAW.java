@@ -41,7 +41,7 @@ public class EmaitzakIpiniDAW {
         Quote q = null;
         try{
             q =sut.storeQuote("test", 2.0, e.getQuestions().get(0));
-            sut.EmaitzakIpini(q);
+            sut.emaitzakIpini(q);
             fail("Debería dar error");
         } catch(QuoteAlreadyExist ex){
             fail();
@@ -69,7 +69,7 @@ public class EmaitzakIpiniDAW {
         assertNotNull(u);
         assertNotNull(apu);
         try {
-            sut.EmaitzakIpini(q1);
+            sut.emaitzakIpini(q1);
             // Busca la pregunta desde la base de datos DataAccess original
             Question f = sut.findQuestionFromQuote(q1);
             assertEquals(q1.getForecast(), f.getResult());
@@ -102,7 +102,7 @@ public class EmaitzakIpiniDAW {
         assertNotNull(apu);
 
         try {
-            sut.EmaitzakIpini(q1);
+            sut.emaitzakIpini(q1);
             // Busca la pregunta desde la base de datos DataAccess original
             Question f = sut.findQuestionFromQuote(q1);
             // Comprueba que se ha cambiado su atributo de pronostico ganador

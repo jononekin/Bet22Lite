@@ -1,31 +1,24 @@
 package dataAccess;
 
 import java.util.ArrayList;
-//hello
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.Vector;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
-
 import configuration.ConfigXML;
 import configuration.UtilDate;
 import domain.ApustuAnitza;
 import domain.Apustua;
-
 import domain.Event;
 import domain.Jarraitzailea;
-
 import domain.Question;
 import domain.Quote;
 import domain.Registered;
@@ -36,23 +29,24 @@ import exceptions.EventNotFinished;
 import exceptions.QuestionAlreadyExist;
 import exceptions.QuoteAlreadyExist;
 
+
+import java.util.logging.Logger;
 /**
  * It implements the data access to the objectDb database
  */
 public class DataAccess  {
-	protected static EntityManager  db;
-	protected static EntityManagerFactory emf;
-
+	protected EntityManager  db;
+	protected EntityManagerFactory emf;
+	final Logger logger = Logger.getLogger(DataAccess.class.getName());
 
 	ConfigXML c=ConfigXML.getInstance();
+	
+public DataAccess(boolean initializeMode)  {
+	logger.info("Creating DataAccess instance => isDatabaseLocal: "+c.isDatabaseLocal()+" getDatabBaseOpenMode: "+c.getDataBaseOpenMode());
+	logger.info(String.format("Creating DataAccess instance => isDatabaseLocal: %s getDatabBaseOpenMode: %s", c.isDatabaseLocal(), c.getDataBaseOpenMode()));
 
-     public DataAccess(boolean initializeMode)  {
-		
-		System.out.println("Creating DataAccess instance => isDatabaseLocal: "+c.isDatabaseLocal()+" getDatabBaseOpenMode: "+c.getDataBaseOpenMode());
-
-		open(initializeMode);
-		
-	}
+	open(initializeMode);
+}
 
 	public DataAccess()  {	
 		 this(false);
@@ -600,7 +594,7 @@ public class DataAccess  {
 			this.DiruaSartu(reg3, 50.0, new Date(), "DiruaSartu");
 			this.DiruaSartu(reg4, 50.0, new Date(), "DiruaSartu");
 			
-			System.out.println("Db initialized");
+			logger.info("Db initialized");
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -617,18 +611,18 @@ public class DataAccess  {
  	 * @throws QuestionAlreadyExist if the same question already exists for the event
 	 */
 	public Question createQuestion(Event event, String question, float betMinimum) throws  QuestionAlreadyExist {
-		System.out.println(">> DataAccess: createQuestion=> event= "+event+" question= "+question+" betMinimum="+betMinimum);
-		
-			Event ev = db.find(Event.class, event.getEventNumber());
-			
-			if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
-			
-			db.getTransaction().begin();
-			Question q = ev.addQuestion(question, betMinimum);
-			
-			db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
-							// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-			db.getTransaction().commit();
+		logger.info(String.format(">> DataAccess: createQuestion=> event=%s question=%s betMinimum=%.2f", event, question, betMinimum));
+
+		Event ev = db.find(Event.class, event.getEventNumber());
+
+		if (ev.DoesQuestionExists(question)) throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
+
+		db.getTransaction().begin();
+		Question q = ev.addQuestion(question, betMinimum);
+
+		db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
+						// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+		db.getTransaction().commit();
 			return q;
 		
 	}
@@ -639,14 +633,14 @@ public class DataAccess  {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	public Vector<Event> getEvents(Date date) {
-		System.out.println(">> DataAccess: getEvents");
-		Vector<Event> res = new Vector<Event>();	
+	public List<Event> getEvents(Date date) {
+		logger.info(">> DataAccess: getEvents");
+		List<Event> res = new ArrayList<>();	
 		TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev WHERE ev.eventDate=?1",Event.class);   
 		query.setParameter(1, date);
 		List<Event> events = query.getResultList();
 	 	 for (Event ev:events){
-	 	   System.out.println(ev.toString());		 
+	 	   logger.info(ev.toString());		 
 		   res.add(ev);
 		  }
 	 	return res;
@@ -658,10 +652,9 @@ public class DataAccess  {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	public Vector<Date> getEventsMonth(Date date) {
-		System.out.println(">> DataAccess: getEventsMonth");
-		Vector<Date> res = new Vector<Date>();	
-		
+	public List<Date> getEventsMonth(Date date) {
+		logger.info(">> DataAccess: getEventsMonth");
+		List<Date> res = new ArrayList<>();	
 		Date firstDayMonthDate= UtilDate.firstDayMonth(date);
 		Date lastDayMonthDate= UtilDate.lastDayMonth(date);
 				
@@ -671,7 +664,7 @@ public class DataAccess  {
 		query.setParameter(2, lastDayMonthDate);
 		List<Date> dates = query.getResultList();
 	 	 for (Date d:dates){
-	 	   System.out.println(d.toString());		 
+	 	   logger.info(d.toString());		 
 		   res.add(d);
 		  }
 	 	return res;
@@ -680,19 +673,19 @@ public class DataAccess  {
 
 public void open(boolean initializeMode){
 		
-		System.out.println("Opening DataAccess instance => isDatabaseLocal: "+c.isDatabaseLocal()+" getDatabBaseOpenMode: "+c.getDataBaseOpenMode());
+		logger.info("Opening DataAccess instance => isDatabaseLocal: "+c.isDatabaseLocal()+" getDatabBaseOpenMode: "+c.getDataBaseOpenMode());
 
 		String fileName=c.getDbFilename();
 		if (initializeMode) {
 			fileName=fileName+";drop";
-			System.out.println("Deleting the DataBase");
+			logger.info("Deleting the DataBase");
 		}
 		
 		if (c.isDatabaseLocal()) {
-			  emf = Persistence.createEntityManagerFactory("objectdb:"+fileName);
-			  db = emf.createEntityManager();
+			emf = Persistence.createEntityManagerFactory("objectdb:"+fileName);
+			db = emf.createEntityManager();
 		} else {
-			Map<String, String> properties = new HashMap<String, String>();
+			Map<String, String> properties = new HashMap<>();
 			  properties.put("javax.persistence.jdbc.user", c.getUser());
 			  properties.put("javax.persistence.jdbc.password", c.getPassword());
 
@@ -703,7 +696,7 @@ public void open(boolean initializeMode){
 		
 	}
 	public boolean existQuestion(Event event, String question) {
-		System.out.println(">> DataAccess: existQuestion=> event= "+event+" question= "+question);
+		logger.info(">> DataAccess: existQuestion=> event= "+event+" question= "+question);
 		Event ev = db.find(Event.class, event.getEventNumber());
 		return ev.DoesQuestionExists(question);
 	
@@ -754,9 +747,9 @@ public void open(boolean initializeMode){
 	}
 
 	private boolean isEventValid(String description, Date eventDate, boolean b) {
-		TypedQuery<Event> Equery = db.createQuery("SELECT e FROM Event e WHERE e.getEventDate() =?1 ",Event.class);
-		Equery.setParameter(1, eventDate);
-		for(Event ev: Equery.getResultList()) {
+		TypedQuery<Event> eQuery = db.createQuery("SELECT e FROM Event e WHERE e.getEventDate() =?1 ",Event.class);
+		eQuery.setParameter(1, eventDate);
+		for(Event ev: eQuery.getResultList()) {
 			if(ev.getDescription().equals(description)) {
 				b = false;
 			}
@@ -764,15 +757,15 @@ public void open(boolean initializeMode){
 		return b;
 	}
 	
-	public Quote storeQuote(String forecast, Double Quote, Question question) throws QuoteAlreadyExist {
-		//System.out.println(">> DataAccess: createQuestion=> event= "+event+" question= "+question+" betMinimum="+betMinimum);
+	public Quote storeQuote(String forecast, Double quote, Question question) throws QuoteAlreadyExist {
+		
 		
 		Question q = db.find(Question.class, question.getQuestionNumber());
 		
 		if (q.doesQuoteExist(forecast)) throw new QuoteAlreadyExist("Kuota existitzen da");
 		
 		db.getTransaction().begin();
-		Quote quo = q.addQuote(Quote, forecast, q);
+		Quote quo = q.addQuote(quote, forecast, q);
 		db.persist(quo); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class
 						// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 		db.getTransaction().commit();
@@ -782,7 +775,7 @@ public void open(boolean initializeMode){
 	
 	public void close(){
 		db.close();
-		System.out.println("DataBase closed");
+		logger.info("DataBase closed");
 	}
 	
 	public Sport findSport(Event q){
@@ -811,86 +804,84 @@ public void open(boolean initializeMode){
 	}
 	
 	public Collection<Question> findQuestion(Event event){
-		TypedQuery<Question> Qquery = db.createQuery("SELECT q FROM Question q WHERE q.getEvent() =?1 ",Question.class);
-		Qquery.setParameter(1, event);
-		return Qquery.getResultList();
+		TypedQuery<Question> qQuery = db.createQuery("SELECT q FROM Question q WHERE q.getEvent() =?1 ",Question.class);
+		qQuery.setParameter(1, event);
+		return qQuery.getResultList();
 	}
 	
 	public Collection<Quote> findQuote(Question question){
-		TypedQuery<Quote> Qquery = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion() =?1 ",Quote.class);
-		Qquery.setParameter(1, question);
-		return Qquery.getResultList();
+		TypedQuery<Quote> qQuery = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion() =?1 ",Quote.class);
+		qQuery.setParameter(1, question);
+		return qQuery.getResultList();
 	}
 	
 	public void DiruaSartu(Registered u, Double dirua, Date data, String mota) {
-		Registered user = (Registered) db.find(Registered.class, u.getUsername()); 
+		Registered user = db.find(Registered.class, u.getUsername()); 
 		db.getTransaction().begin();
 		Transaction t = new Transaction(user, dirua, data, mota); 
-		System.out.println(t.getMota());
+		logger.info(t.getMota());
 		user.addTransaction(t);
 		user.updateDiruKontua(dirua);
 		db.persist(t);
 		db.getTransaction().commit();
 	}
 	
-	public boolean ApustuaEgin(Registered u, Vector<Quote> quote, Double balioa, Integer apustuBikoitzaGalarazi) {
-		Registered user = (Registered) db.find(Registered.class, u.getUsername());
-		Boolean b;
-		if(user.getDirukop()>=balioa) {
-			db.getTransaction().begin();
-			ApustuAnitza apustuAnitza = new ApustuAnitza(user, balioa);
-			db.persist(apustuAnitza);
-			for(Quote quo: quote) {
-				Quote kuote = db.find(Quote.class, quo.getQuoteNumber());
-				Apustua ap = new Apustua(apustuAnitza, kuote);
-				db.persist(ap);
-				apustuAnitza.addApustua(ap);
-				kuote.addApustua(ap);
-			}
-			db.getTransaction().commit();
-			db.getTransaction().begin();
-			if(apustuBikoitzaGalarazi==-1) {
-				apustuBikoitzaGalarazi=apustuAnitza.getApustuAnitzaNumber();
-			}
-			apustuAnitza.setApustuKopia(apustuBikoitzaGalarazi);
-			user.updateDiruKontua(-balioa);
-			Transaction t = new Transaction(user, balioa, new Date(), "ApustuaEgin"); 
-			user.addApustuAnitza(apustuAnitza);
-			for(Apustua a: apustuAnitza.getApustuak()) {
-				Apustua apu = db.find(Apustua.class, a.getApostuaNumber());
-				Quote q = db.find(Quote.class, apu.getKuota().getQuoteNumber());
-				Sport spo =q.getQuestion().getEvent().getSport();
-				spo.setApustuKantitatea(spo.getApustuKantitatea()+1);
-				
-			}
-			user.addTransaction(t);
-			db.persist(t);
-			db.getTransaction().commit();
-			for(Jarraitzailea reg:user.getJarraitzaileLista()) {
-				Jarraitzailea erab=db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());
-				b=true;
-				for(ApustuAnitza apu: erab.getNork().getApustuAnitzak()) {
-					if(apu.getApustuKopia().equals(apustuAnitza.getApustuKopia())) {
-						b=false;
-					}
-				}
-				if(b) {
-					if(erab.getNork().getDiruLimitea()<balioa) {
-						this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
-					}else{
-						this.ApustuaEgin(erab.getNork(), quote, balioa, apustuBikoitzaGalarazi);
-					}
-				}
-			}
-			return true; 
-		}else{
-			return false; 
+	public boolean ApustuaEgin(Registered u, List<Quote> quote, Double balioa, Integer apustuBikoitzaGalarazi) {
+		Registered user = db.find(Registered.class, u.getUsername());
+		Boolean b = true;
+		if (user == null || user.getDirukop()<balioa) {
+			return false;
 		}
 		
+		db.getTransaction().begin();
+		ApustuAnitza apustuAnitza = new ApustuAnitza(user, balioa);
+		db.persist(apustuAnitza);
+		for(Quote quo: quote) {
+			Quote kuote = db.find(Quote.class, quo.getQuoteNumber());
+			Apustua ap = new Apustua(apustuAnitza, kuote);
+			db.persist(ap);
+			apustuAnitza.addApustua(ap);
+			kuote.addApustua(ap);
+		}
+		db.getTransaction().commit();
+		db.getTransaction().begin();
+		if(apustuBikoitzaGalarazi==-1) {
+			apustuBikoitzaGalarazi=apustuAnitza.getApustuAnitzaNumber();
+		}
+		apustuAnitza.setApustuKopia(apustuBikoitzaGalarazi);
+		user.updateDiruKontua(-balioa);
+		Transaction t = new Transaction(user, balioa, new Date(), "ApustuaEgin"); 
+		user.addApustuAnitza(apustuAnitza);
+		for(Apustua a: apustuAnitza.getApustuak()) {
+			Apustua apu = db.find(Apustua.class, a.getApostuaNumber());
+			Quote q = db.find(Quote.class, apu.getKuota().getQuoteNumber());
+			Sport spo =q.getQuestion().getEvent().getSport();
+			spo.setApustuKantitatea(spo.getApustuKantitatea()+1);
+			
+		}
+		user.addTransaction(t);
+		db.persist(t);
+		db.getTransaction().commit();
+		for(Jarraitzailea reg:user.getJarraitzaileLista()) {
+			Jarraitzailea erab=db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());
+			for(ApustuAnitza apu: erab.getNork().getApustuAnitzak()) {
+				if(apu.getApustuKopia().equals(apustuAnitza.getApustuKopia())) {
+					b=false;
+				}
+			}
+			if(b) {
+				if(erab.getNork().getDiruLimitea()<balioa) {
+					this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
+				}else{
+					this.ApustuaEgin(erab.getNork(), quote, balioa, apustuBikoitzaGalarazi);
+				}
+			}
+		}
+		return true; 
 	}
 	
 	public void apustuaEzabatu(Registered user1, ApustuAnitza ap) {
-		Registered user = (Registered) db.find(Registered.class, user1.getUsername());
+		Registered user = db.find(Registered.class, user1.getUsername());
 		ApustuAnitza apustuAnitza = db.find(ApustuAnitza.class, ap.getApustuAnitzaNumber());
 		db.getTransaction().begin();
 		user.updateDiruKontua(apustuAnitza.getBalioa());
@@ -910,29 +901,29 @@ public void open(boolean initializeMode){
 	
 	public List<Apustua> findApustua(Registered u){
 
-		TypedQuery<Apustua> Aquery = db.createQuery("SELECT a FROM Apustua a WHERE a.getUser().getUsername() =?1 ", Apustua.class);
-		Aquery.setParameter(1, u.getUsername());
-		return Aquery.getResultList();
+		TypedQuery<Apustua> aQuery = db.createQuery("SELECT a FROM Apustua a WHERE a.getUser().getUsername() =?1 ", Apustua.class);
+		aQuery.setParameter(1, u.getUsername());
+		return aQuery.getResultList();
 	}
 	public List<ApustuAnitza> findApustuAnitza(Registered u){
 
-		TypedQuery<ApustuAnitza> Aquery = db.createQuery("SELECT aa FROM ApustuAnitza aa WHERE aa.getUser().getUsername() =?1 ", ApustuAnitza.class);
-		Aquery.setParameter(1, u.getUsername());
-		return Aquery.getResultList();
+		TypedQuery<ApustuAnitza> aQuery = db.createQuery("SELECT aa FROM ApustuAnitza aa WHERE aa.getUser().getUsername() =?1 ", ApustuAnitza.class);
+		aQuery.setParameter(1, u.getUsername());
+		return aQuery.getResultList();
 	}
 	
 	public List<Transaction> findTransakzioak(Registered u){
 
-		TypedQuery<Transaction> Tquery = db.createQuery("SELECT t FROM Transaction t WHERE t.getErabiltzailea().getUsername() =?1 ", Transaction.class);
-		Tquery.setParameter(1, u.getUsername());
-		return Tquery.getResultList();
+		TypedQuery<Transaction> tQuery = db.createQuery("SELECT t FROM Transaction t WHERE t.getErabiltzailea().getUsername() =?1 ", Transaction.class);
+		tQuery.setParameter(1, u.getUsername());
+		return tQuery.getResultList();
 		
 	}
 	
 	public void ApustuaIrabazi(ApustuAnitza apustua) {
 		ApustuAnitza apustuAnitza = db.find(ApustuAnitza.class, apustua.getApustuAnitzaNumber());
-		Registered reg = (Registered) apustuAnitza.getUser();
-		Registered r = (Registered) db.find(Registered.class, reg.getUsername());
+		Registered reg = apustuAnitza.getUser();
+		Registered r = db.find(Registered.class, reg.getUsername());
 		db.getTransaction().begin();
 		apustuAnitza.setEgoera("irabazita");
 		Double d=apustuAnitza.getBalioa();
@@ -947,7 +938,7 @@ public void open(boolean initializeMode){
 		db.getTransaction().commit();
 	}
 	
-	public void EmaitzakIpini(Quote quote) throws EventNotFinished{
+	public void emaitzakIpini(Quote quote) throws EventNotFinished{
 		
 		Quote q = db.find(Quote.class, quote); 
 		String result = q.getForecast();
@@ -955,7 +946,7 @@ public void open(boolean initializeMode){
 		if(new Date().compareTo(q.getQuestion().getEvent().getEventDate())<0)
 			throw new EventNotFinished();
 
-		Vector<Apustua> listApustuak = q.getApustuak();
+		List<Apustua> listApustuak = q.getApustuak();
 		db.getTransaction().begin();
 		Question que = q.getQuestion(); 
 		Question question = db.find(Question.class, que); 
@@ -1000,10 +991,11 @@ public void open(boolean initializeMode){
 
 	private void extracted(Event event, boolean resultB) {
 		if(!resultB) return;
-		else if(new Date().compareTo(event.getEventDate())<0) {
-			TypedQuery<Quote> Qquery = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion().getEvent().getEventNumber() =?1", Quote.class);
-			Qquery.setParameter(1, event.getEventNumber()); 
-			List<Quote> listQUO = Qquery.getResultList();
+		
+		if(new Date().compareTo(event.getEventDate())<0) {
+			TypedQuery<Quote> qQuery = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion().getEvent().getEventNumber() =?1", Quote.class);
+			qQuery.setParameter(1, event.getEventNumber()); 
+			List<Quote> listQUO = qQuery.getResultList();
 			for(int j=0; j<listQUO.size(); j++) {
 				Quote quo = db.find(Quote.class, listQUO.get(j));
 				for(int i=0; i<quo.getApustuak().size(); i++) {
@@ -1037,15 +1029,15 @@ public void open(boolean initializeMode){
 	}
 	
 	public String saldoaBistaratu(Registered u) {
-		Registered reg = (Registered)db.find(Registered.class, u.getUsername());
+		Registered reg = db.find(Registered.class, u.getUsername());
 		return reg.getDirukop().toString();
 	}
 	
 	
 	public List<Registered> rankingLortu(){
-		TypedQuery<Registered> Rquery = db.createQuery("SELECT r FROM Registered r", Registered.class);
-		List<Registered> listR = Rquery.getResultList();
-		List<Registered> ema= new ArrayList<Registered>();
+		TypedQuery<Registered> rQuery = db.createQuery("SELECT r FROM Registered r", Registered.class);
+		List<Registered> listR = rQuery.getResultList();
+		List<Registered> ema= new ArrayList<>();
 		int i;
 		for(Registered r: listR) {
 			if(ema.isEmpty()) {
@@ -1063,8 +1055,7 @@ public void open(boolean initializeMode){
 	
 	public List<Event> getEventsAll() {	
 		TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev ",Event.class);   
-		List<Event> events = query.getResultList();
-	 	return events;
+	 	return query.getResultList();
 	}
 	
 	
@@ -1105,8 +1096,8 @@ public void open(boolean initializeMode){
 	
 	public boolean jarraitu(Registered jabea, Registered jarraitua, Double limit) {
 		Boolean b=false;
-		Registered jarraitu = (Registered) db.find(Registered.class, jarraitua.getUsername());
-		Registered harpideduna = (Registered) db.find(Registered.class, jabea.getUsername());
+		Registered jarraitu = db.find(Registered.class, jarraitua.getUsername());
+		Registered harpideduna = db.find(Registered.class, jabea.getUsername());
 		if(!harpideduna.getJarraitutakoLista().contains(jarraitu)) {
 			db.getTransaction().begin();
 			Jarraitzailea jar = new Jarraitzailea(harpideduna, jarraitu);
@@ -1138,7 +1129,7 @@ public void open(boolean initializeMode){
 	}
 	
 	public void ezJarraituTaldea(Registered u) {
-		Registered r = (Registered) db.find(Registered.class, u.getUsername()); 
+		Registered r = db.find(Registered.class, u.getUsername()); 
 		db.getTransaction().begin();
 		Team t = db.find(Team.class, r.getTaldea());
 		t.removeUser(r);
@@ -1152,7 +1143,7 @@ public void open(boolean initializeMode){
 	}
 	
 	public void jarraituTaldea(Registered u, Team t) {
-		Registered r = (Registered) db.find(Registered.class, u.getUsername());
+		Registered r = db.find(Registered.class, u.getUsername());
 		Team team = db.find(Team.class, t.getIzena());
 		db.getTransaction().begin();
 		r.setTaldea(team);

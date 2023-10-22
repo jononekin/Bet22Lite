@@ -11,6 +11,7 @@ import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -50,7 +51,7 @@ public class EmaitzakIpiniGUI extends JFrame{
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private List<Date> datesWithEventsCurrentMonth = new Vector<Date>();
 	private final JLabel jLabelQuestion = new JLabel(); //$NON-NLS-1$ //$NON-NLS-2$
 	private final JComboBox<Question> jComboBoxQuestions = new JComboBox<Question>();
 	DefaultComboBoxModel<Question> modelQuestions = new DefaultComboBoxModel<Question>();
@@ -156,7 +157,7 @@ public class EmaitzakIpiniGUI extends JFrame{
 				Question que= (Question) jComboBoxQuestions.getSelectedItem();
 				Quote q = (Quote)jComboBoxQuotes.getSelectedItem(); 
 				try {
-					businessLogic.EmaitzakIpini(q);
+					businessLogic.emaitzakIpini(q);
 					jComboBoxQuestions.removeAllItems();
 					for(domain.Question question : businessLogic.findQuestion(event)) {
 						if(question.getResult()==null)
@@ -241,13 +242,13 @@ public class EmaitzakIpiniGUI extends JFrame{
 
 					paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 
-					//	Date firstDay = UtilDate.trim(new Date(jCalendar.getCalendar().getTime().getTime()));
+					
 					Date firstDay = UtilDate.trim(calendarAct.getTime());
 
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						List<domain.Event> events = facade.getEvents(firstDay);
 						
 						if (events.isEmpty()) {
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
@@ -282,7 +283,7 @@ public class EmaitzakIpiniGUI extends JFrame{
 	}
 
 	
-public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWithEventsCurrentMonth) {
+public static void paintDaysWithEvents(JCalendar jCalendar,List<Date> datesWithEventsCurrentMonth2) {
 		// For each day with events in current month, the background color for that day is changed.
 
 		
@@ -301,7 +302,7 @@ public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWit
 			offset += 5;
 		
 		
-	 	for (Date d:datesWithEventsCurrentMonth){
+	 	for (Date d:datesWithEventsCurrentMonth2){
 
 	 		calendar.setTime(d);
 	 		System.out.println(d);
