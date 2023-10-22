@@ -999,7 +999,7 @@ public void open(boolean initializeMode){
 	}
 
 	private void extracted(Event event, boolean resultB) {
-		if(!resultB) return false;
+		if(!resultB) return;
 		else if(new Date().compareTo(event.getEventDate())<0) {
 			TypedQuery<Quote> Qquery = db.createQuery("SELECT q FROM Quote q WHERE q.getQuestion().getEvent().getEventNumber() =?1", Quote.class);
 			Qquery.setParameter(1, event.getEventNumber()); 
