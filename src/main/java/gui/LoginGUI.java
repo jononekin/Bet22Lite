@@ -19,7 +19,6 @@ import domain.Registered;
 
 public class LoginGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane= null;
 	private JTextField txtUsername;
 	private JTextField txtPassword;
 	private JLabel izenaSartu = new JLabel(); 
@@ -41,7 +40,6 @@ public class LoginGUI extends JFrame{
 		txtUsername = new JTextField();
 		txtUsername.setHorizontalAlignment(SwingConstants.CENTER);
 		txtUsername.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		//txtUsername.setText(ResourceBundle.getBundle("Etiquetas").getString("Username")); //$NON-NLS-1$ //$NON-NLS-2$
 		txtUsername.setBounds(262, 134, 224, 51);
 		txtUsername.setColumns(10);
 		getContentPane().add(txtUsername);
@@ -49,7 +47,6 @@ public class LoginGUI extends JFrame{
 		
 		txtPassword = new JPasswordField();
 		txtPassword.setHorizontalAlignment(SwingConstants.CENTER);
-		//txtPassword.setText(ResourceBundle.getBundle("Etiquetas").getString("Password")); //$NON-NLS-1$ //$NON-NLS-2$
 		txtPassword.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		txtPassword.setColumns(10);
 		txtPassword.setBounds(262, 228, 224, 51);

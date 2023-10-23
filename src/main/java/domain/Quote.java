@@ -1,6 +1,7 @@
 package domain;
 
 import java.io.Serializable;
+import java.util.Objects;
 import java.util.Vector;
 
 import javax.persistence.CascadeType;
@@ -98,7 +99,7 @@ public class Quote implements Serializable{
 		boolean aurkitua = false; 
 		int i = 0; 
 		while( i<apustuak.size() && !aurkitua) {
-			if(apustuak.get(i).getApostuaNumber()==a.getApostuaNumber()) {
+			if(Objects.equals(apustuak.get(i).getApostuaNumber(), a.getApostuaNumber())) {
 				apustuak.remove(i); 
 				aurkitua = true; 
 			}

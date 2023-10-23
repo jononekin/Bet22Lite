@@ -1,0 +1,7 @@
+organization=is2madbfg
+projectKey=is2madbfg_bet22lite
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.47093
+dashboardUrl=https://sonarcloud.io/dashboard?id=is2madbfg_bet22lite
+ceTaskId=AYsPw4iNFXQPXLpGu9ek
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYsPw4iNFXQPXLpGu9ek

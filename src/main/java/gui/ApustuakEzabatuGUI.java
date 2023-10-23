@@ -26,8 +26,7 @@ public class ApustuakEzabatuGUI extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private Registered user;
 
-	private JComboBox comboBox;
-	//DefaultComboBoxModel<ApustuaContainer> modelApustua = new DefaultComboBoxModel<ApustuaContainer>();
+	private JComboBox<ApustuAnitza> comboBox;
 
 	private JButton jButtonClose;
 
@@ -49,7 +48,7 @@ public class ApustuakEzabatuGUI extends JFrame{
 		lblComboBox.setBounds(186, 62, 215, 21);
 		getContentPane().add(lblComboBox);
 		
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<ApustuAnitza>();
 		comboBox.setBounds(10, 105, 570, 21);
 		comboBox.setModel(listApustuak);
 		for(ApustuAnitza ap : businessLogic.findApustuAnitza(user)){

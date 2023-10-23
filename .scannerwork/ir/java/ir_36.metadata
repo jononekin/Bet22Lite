@@ -1,0 +1,25 @@
+dataAccess.DataAccess#gertaerakKopiatu(Ldomain/Event;Ljava/util/Date;)Z
+domain.Quote#<init>(Ljava/lang/Double;Ljava/lang/String;Ldomain/Question;)V
+domain.Question#<init>(Ljava/lang/String;DLdomain/Event;)V
+java.lang.String#split(Ljava/lang/String;)[Ljava/lang/String;
+domain.Event#<init>(Ljava/lang/String;Ljava/util/Date;Ldomain/Team;Ldomain/Team;)V
+domain.Quote#instance-init#
+domain.Team#<init>(Ljava/lang/String;)V
+domain.Team#instance-init#
+domain.Event#instance-init#
+domain.Question#instance-init#
+==
+listaraGehitu domain.Question#listaraGehitu(Ldomain/Quote;)V
+addEvent domain.Sport#addEvent(Ldomain/Event;)V
+getDescription domain.Event#getDescription()Ljava/lang/String;
+getEventNumber domain.Event#getEventNumber()Ljava/lang/Integer;
+getBetMinimum domain.Question#getBetMinimum()D
+listaraGehitu domain.Event#listaraGehitu(Ldomain/Question;)V
+getQuestionNumber domain.Question#getQuestionNumber()Ljava/lang/Integer;
+getQuotes domain.Question#getQuotes()Ljava/util/Vector;
+setSport domain.Event#setSport(Ldomain/Sport;)V
+getQuestions domain.Event#getQuestions()Ljava/util/Vector;
+getQuote domain.Quote#getQuote()Ljava/lang/Double;
+getSport domain.Event#getSport()Ldomain/Sport;
+getForecast domain.Quote#getForecast()Ljava/lang/String;
+getQuestion domain.Question#getQuestion()Ljava/lang/String;

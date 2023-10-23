@@ -1,0 +1,26 @@
+
+FdataAccess.DataAccess#findApustua(Ldomain/Registered;)Ljava/util/List;]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.java‡ ‡(!"1*é
+1
+ˆ! ˆ(#Ÿœ
+
+ˆ; ˆ(J
+%0java.lang.String"1domain.Registered#getUsername()Ljava/lang/String;*4
+
+__unknown_file (
+
+udomain.Registered2getUsername()Ÿœ
+
+Š Š((
+%1java.lang.String"1domain.Registered#getUsername()Ljava/lang/String;*4
+
+__unknown_file (
+
+udomain.Registered2getUsername()"
+
+‹ ‹( 
+"":$
+
+‡" ‡(.
+udomain.RegisteredB
+dataAccess.DataAccessH

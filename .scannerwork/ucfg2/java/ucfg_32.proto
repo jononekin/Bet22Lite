@@ -1,0 +1,415 @@
+
+6dataAccess.DataAccess#gertaeraEzabatu(Ldomain/Event;)Z]
+Q/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/dataAccess/DataAccess.java— —("22*ç
+13
+· ·(rp
+
+· ·( 	
+%7int"java.util.List#size()I*7
+
+__unknown_file (
+
+listQUOjava.util.List2size()*
+12
+1*è
+14
+ﬁ ﬁ( °û
+
+ﬂ ﬂ(0
+%6java.lang.Integer"0domain.Event#getEventNumber()Ljava/lang/Integer;*3
+
+__unknown_file (
+
+eventdomain.Event2getEventNumber()S
+Q
+
+‡ ‡(0
+listQUOjava.util.List"__id*"
+
+__unknown_file (
+""*
+13*ú
+15
+› ›(42
+
+› ›(
+%2java.util.Date"java.util.Dateb
+`
+
+› ›(
+%3"java.util.Date#<init>()V*2
+
+__unknown_file (
+
+%2java.util.Dateóî
+
+›  ›(4
+%4java.util.Date"+domain.Event#getEventDate()Ljava/util/Date;*3
+
+__unknown_file (
+
+eventdomain.Event2getEventDate()Ã…
+
+› ›(5	
+%5int"+java.util.Date#compareTo(Ljava/util/Date;)I*2
+
+__unknown_file (
+
+%2java.util.Date*2
+
+__unknown_file (
+
+%4java.util.Date2compareTo(Ljava/util/Date;)*
+14
+1*&
+16
+‹
+ ‹("
+
+‹ ‹(
+""*˝
+18
+÷ ÷(N
+L
+
+÷ ÷(
+qdomain.Question"__id*"
+
+__unknown_file (
+""å
+â
+
+÷ ÷(
+qdomain.Question"
+__arrayGet*5
+
+__unknown_file (
+
+listQjava.util.List*"
+
+__unknown_file (
+""*
+15
+16
+20*%
+1
+ˆ ˆ("
+
+˘ ˘(
+""*±
+4
+Ó Ó(ñì
+
+Ô Ô(!
+%28domain.Question"+domain.Quote#getQuestion()Ldomain/Question;*1
+
+__unknown_file (
+
+quodomain.Quote2getQuestion()êç
+
+Ô Ô(,
+%29domain.Event"(domain.Question#getEvent()Ldomain/Event;*4
+
+__unknown_file (
+
+%28domain.Question2
+getEvent()äá
+
+Ô Ô(7
+%30domain.Sport"%domain.Event#getSport()Ldomain/Sport;*1
+
+__unknown_file (
+
+%29domain.Event2
+getSport()\
+Z
+
+Ô Ô(8
+spodomain.Sport"__id*1
+
+__unknown_file (
+
+%30domain.Sport™ß
+
+ (6
+%31java.lang.Integer"5domain.Sport#getApustuKantitatea()Ljava/lang/Integer;*1
+
+__unknown_file (
+
+spodomain.Sport2getApustuKantitatea()’“
+
+ (9
+%32void"6domain.Sport#setApustuKantitatea(Ljava/lang/Integer;)V*1
+
+__unknown_file (
+
+spodomain.Sport*"
+
+__unknown_file (
+""2(setApustuKantitatea(Ljava/lang/Integer;)*
+11*â
+5
+Ï Ï(
+ÚÔ
+
+Ï Ï(
+%27void"<dataAccess.DataAccess#ApustuaIrabazi(Ldomain/ApustuAnitza;)V*5
+
+__unknown_file (
+dataAccess.DataAccess*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2%ApustuaIrabazi(Ldomain/ApustuAnitza;)*
+4*∞
+6
+Î. Î(1ñì
+
+Î. Î(D
+%26boolean"'domain.ApustuAnitza#irabazitaMarkatu()Z*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2irabazitaMarkatu()*
+4
+5*ø
+7
+Î Î(¶£
+
+Î Î( 
+%24java.util.Vector"3domain.ApustuAnitza#getApustuak()Ljava/util/Vector;*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2getApustuak()}{
+
+Î Î(*
+%25boolean"java.util.Vector#isEmpty()Z*5
+
+__unknown_file (
+
+%24java.util.Vector2	isEmpty()*
+4
+6*ä
+8
+Í Í(
+†ù
+
+Í Í('
+%22domain.Registered"0domain.ApustuAnitza#getUser()Ldomain/Registered;*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2	getUser()–Õ
+
+Í Í(-
+%23void"OdataAccess.DataAccess#apustuaEzabatu(Ldomain/Registered;Ldomain/ApustuAnitza;)V*5
+
+__unknown_file (
+dataAccess.DataAccess*6
+
+__unknown_file (
+
+%22domain.Registered*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza28apustuaEzabatu(Ldomain/Registered;Ldomain/ApustuAnitza;)*
+4*à
+9
+È( È(+¢ü
+
+È( È(7
+%20java.lang.String"1domain.ApustuAnitza#getEgoera()Ljava/lang/String;*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2getEgoera()…∆
+
+È( È(I
+%21boolean",java.lang.String#equals(Ljava/lang/Object;)Z*5
+
+__unknown_file (
+
+%20java.lang.String*'
+
+__unknown_file (	
+galduta2equals(Ljava/lang/Object;)*
+7
+8*∞
+20
+◊ ◊(óî
+
+◊ ◊(
+%1java.lang.String"-domain.Question#getResult()Ljava/lang/String;*2
+
+__unknown_file (
+
+qdomain.Question2getResult()*
+18*ª
+10
+‰! ‰($òï
+
+‰! ‰(2
+%11java.util.Vector",domain.Quote#getApustuak()Ljava/util/Vector;*1
+
+__unknown_file (
+
+quodomain.Quote2getApustuak()ç
+ä
+
+‰! ‰(9
+%12domain.Apustua"
+__arrayGet*5
+
+__unknown_file (
+
+%11java.util.Vector*"
+
+__unknown_file (
+""™ß
+
+‰! ‰(K
+%13domain.ApustuAnitza"5domain.Apustua#getApustuAnitza()Ldomain/ApustuAnitza;*3
+
+__unknown_file (
+
+%12domain.Apustua2getApustuAnitza()s
+q
+
+‰ ‰(L#
+apustuAnitzadomain.ApustuAnitza"__id*8
+
+__unknown_file (
+
+%13domain.ApustuAnitza≈¬
+
+Â4 Â(X
+%14java.lang.Integer">domain.ApustuAnitza#getApustuAnitzaNumber()Ljava/lang/Integer;*A
+
+__unknown_file (%
+#
+apustuAnitzadomain.ApustuAnitza2getApustuAnitzaNumber()T
+R
+
+Â Â(Z
+ap1domain.ApustuAnitza"__id*"
+
+__unknown_file (
+""òï
+
+Á Á((
+%15java.util.Vector",domain.Quote#getApustuak()Ljava/util/Vector;*1
+
+__unknown_file (
+
+quodomain.Quote2getApustuak()ç
+ä
+
+Á Á(/
+%16domain.Apustua"
+__arrayGet*5
+
+__unknown_file (
+
+%15java.util.Vector*"
+
+__unknown_file (
+""‚ﬂ
+
+Á Á(0
+%17void"4domain.ApustuAnitza#removeApustua(Ldomain/Apustua;)V*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza*3
+
+__unknown_file (
+
+%16domain.Apustua2removeApustua(Ldomain/Apustua;)¶£
+
+È È(
+%18java.util.Vector"3domain.ApustuAnitza#getApustuak()Ljava/util/Vector;*8
+
+__unknown_file (
+
+ap1domain.ApustuAnitza2getApustuak()}{
+
+È È(#
+%19boolean"java.util.Vector#isEmpty()Z*5
+
+__unknown_file (
+
+%18java.util.Vector2	isEmpty()*
+7
+9*Í
+22
+“ “(O
+M
+
+“ “(*
+eventdomain.Event"__id*"
+
+__unknown_file (
+""õò
+
+‘ ‘(-
+%0java.util.Vector"-domain.Event#getQuestions()Ljava/util/Vector;*3
+
+__unknown_file (
+
+eventdomain.Event2getQuestions()c
+a
+
+‘ ‘(.
+listQjava.util.List"__id*4
+
+__unknown_file (
+
+%0java.util.Vector*
+18*®
+11
+„ „(óî
+
+„ „($
+%9java.util.Vector",domain.Quote#getApustuak()Ljava/util/Vector;*1
+
+__unknown_file (
+
+quodomain.Quote2getApustuak()rp
+
+„ „(+
+
+%10int"java.util.Vector#size()I*4
+
+__unknown_file (
+
+%9java.util.Vector2size()*
+13
+10*Ù
+12
+‚ ‚(å
+â
+
+‚% ‚(3
+%8domain.Quote"
+__arrayGet*7
+
+__unknown_file (
+
+listQUOjava.util.List*"
+
+__unknown_file (
+""M
+K
+
+‚ ‚(5
+quodomain.Quote"__id*"
+
+__unknown_file (
+""*
+11: 
+
+—  —((
+evdomain.EventB
+dataAccess.DataAccessHP

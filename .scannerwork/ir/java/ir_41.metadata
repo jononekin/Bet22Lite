@@ -1,0 +1,6 @@
+dataAccess.DataAccess#jarraituTaldea(Ldomain/Registered;Ldomain/Team;)V
+==
+getUsername domain.Registered#getUsername()Ljava/lang/String;
+setTaldea domain.Registered#setTaldea(Ldomain/Team;)V
+getIzena domain.Team#getIzena()Ljava/lang/String;
+addUser domain.Team#addUser(Ldomain/Registered;)V

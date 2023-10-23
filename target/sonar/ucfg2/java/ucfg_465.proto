@@ -1,0 +1,77 @@
+
+.domain.Apustua#galdutaMarkatu(Ldomain/Quote;)ZT
+J/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/domain/Apustua.javaL L("4*|
+2N N(Y
+W
+N N(
+domain.Apustua"
+egoera"__id*'
+
+__unknown_file (	
+galduta"
+O O(
+""*∏
+3MW M(Zùö
+MW M(k
+%5java.lang.Integer"0domain.Quote#getQuoteNumber()Ljava/lang/Integer;*1
+
+__unknown_file (
+
+quodomain.Quote2getQuoteNumber()a
+_
+Mm M(r
+%6domain.Quote"__id*9
+
+__unknown_file (*
+domain.Apustua"
+kuotaùö
+	Mm M(É
+%7java.lang.Integer"0domain.Quote#getQuoteNumber()Ljava/lang/Integer;*0
+
+__unknown_file (
+
+%6domain.Quote2getQuoteNumber()*
+2
+1*˘
+4M M(
+a
+_
+M M(
+
+%0domain.Quote"__id*9
+
+__unknown_file (*
+domain.Apustua"
+kuotaíè
+M M(
+%1domain.Question"+domain.Quote#getQuestion()Ldomain/Question;*0
+
+__unknown_file (
+
+%0domain.Quote2getQuestion()®•
+M M(,
+%2java.lang.Integer"6domain.Question#getQuestionNumber()Ljava/lang/Integer;*3
+
+__unknown_file (
+
+%1domain.Question2getQuestionNumber()ìê
+M. M(?
+%3domain.Question"+domain.Quote#getQuestion()Ldomain/Question;*1
+
+__unknown_file (
+
+quodomain.Quote2getQuestion()®•
+M. M(S
+%4java.lang.Integer"6domain.Question#getQuestionNumber()Ljava/lang/Integer;*3
+
+__unknown_file (
+
+%3domain.Question2getQuestionNumber()*
+3
+1*!
+1Q	 Q("
+Q Q(
+"":
+L L((
+quodomain.QuoteB
+domain.ApustuaHP

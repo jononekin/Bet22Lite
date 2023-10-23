@@ -1,0 +1,3 @@
+dataAccess.DataAccess#popularrenaLortu()Ldomain/Sport;
+==
+getApustuKantitatea domain.Sport#getApustuKantitatea()Ljava/lang/Integer;

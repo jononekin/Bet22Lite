@@ -1,0 +1,15 @@
+
++domain.Event#getEventDate()Ljava/util/Date;R
+H/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/domain/Event.javaM M("1*˜
+1N	 N(e
+c
+N	 N(
+%0java.util.Date"__id*;
+
+__unknown_file (*
+domain.Event"
+	eventDate""
+N N(
+
+%0java.util.DateB
+domain.EventH

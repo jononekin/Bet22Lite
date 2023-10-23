@@ -1,0 +1,2 @@
+test.dataAccess.TestDataAccess#instance-init#
+configuration.ConfigXML#getInstance()Lconfiguration/ConfigXML;

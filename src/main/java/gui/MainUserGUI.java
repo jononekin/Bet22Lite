@@ -21,7 +21,6 @@ import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
 
 import businessLogic.BLFacade;
-import domain.Registered;
 
 
 public class MainUserGUI extends JFrame {
@@ -61,18 +60,12 @@ public class MainUserGUI extends JFrame {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				try {
-					//if (ConfigXML.getInstance().isBusinessLogicLocal()) facade.close();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					System.out.println("Error: "+e1.toString()+" , probably problems with Business Logic or Database");
-				}
+
 				System.exit(1);
 			}
 		});
 
 		initialize();
-		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	
@@ -83,7 +76,6 @@ public class MainUserGUI extends JFrame {
 	 * @return void
 	 */
 	private void initialize() {
-		// this.setSize(271, 295);
 		thisw = this;
 		this.setSize(495, 290);
 		this.setContentPane(getJContentPane());
@@ -216,7 +208,6 @@ public class MainUserGUI extends JFrame {
 		jButtonQueryQueries.setText(ResourceBundle.getBundle("Etiquetas").getString("QueryQueries"));
 		loginButton.setText(ResourceBundle.getBundle("Etiquetas").getString("Login"));
 		registerButton.setText(ResourceBundle.getBundle("Etiquetas").getString("Register"));
-		//jButtonCreateQuery.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateQuery"));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainTitle"));
 	}
 } // @jve:decl-index=0:visual-constraint="0,0"

@@ -95,7 +95,7 @@ public class Event implements Serializable {
 	}
 	
 	/**
-	 * This method creates a bet with a question, minimum bet ammount and percentual profit
+	 * This method creates a bet with a question, minimum bet amount and perceptual profit
 	 * 
 	 * @param question to be added to the event
 	 * @param betMinimum of that question

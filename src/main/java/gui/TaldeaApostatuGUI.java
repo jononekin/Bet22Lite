@@ -20,7 +20,6 @@ import domain.Event;
 import domain.Question;
 import domain.Quote;
 import domain.Registered;
-import domain.Registered;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import javax.swing.event.ListSelectionListener;
@@ -39,16 +38,16 @@ public class TaldeaApostatuGUI extends JFrame{
 	private JLabel lblEquipo;
 
 	private JLabel lblEvent;
-	private JList list;
+	private JList<Event> list;
 	private DefaultListModel<Event> events = new DefaultListModel<Event>();
 	private JScrollPane scrollBar;
 	private JLabel lblQuestion;
-	private JList list_1;
+	private JList<Question> list_1;
 	private DefaultListModel<Question> questions = new DefaultListModel<Question>();
 	private JScrollPane scrollBar_1;
 	private DefaultListModel<Quote> quotes = new DefaultListModel<Quote>();
 	private JLabel lblQuotes;
-	private JList list_2;
+	private JList<Quote> list_2;
 	private JScrollPane scrollBar_2;
 	private JButton btnClose;
 	private JButton btnApostatu;
@@ -92,13 +91,13 @@ public class TaldeaApostatuGUI extends JFrame{
 		lblEvent.setBounds(31, 138, 80, 27);
 		getContentPane().add(lblEvent);
 		
-		list = new JList();
+		list = new JList<Event>();
 		list.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		list.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				btnApostatu.setEnabled(false);
 				questions.removeAllElements();
-				for(domain.Question question : businessLogic.findQuestion((Event)list.getSelectedValue()))
+				for(domain.Question question : businessLogic.findQuestion(list.getSelectedValue()))
 					questions.addElement(question); 
 				if(questions.size()==0) {
 					lblErrorQuestion.setVisible(true);
@@ -124,13 +123,13 @@ public class TaldeaApostatuGUI extends JFrame{
 		lblQuestion.setBounds(31, 342, 80, 29);
 		getContentPane().add(lblQuestion);
 		
-		list_1 = new JList();
+		list_1 = new JList<Question>();
 		list_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		list_1.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				btnApostatu.setEnabled(false);
 				quotes.removeAllElements();
-				for(domain.Quote quote : businessLogic.findQuote((Question)list_1.getSelectedValue()))
+				for(domain.Quote quote : businessLogic.findQuote(list_1.getSelectedValue()))
 					quotes.addElement(quote);
 				if(quotes.size()==0) {
 					btnApostatu.setEnabled(false);
@@ -158,7 +157,7 @@ public class TaldeaApostatuGUI extends JFrame{
 		lblQuotes.setBounds(31, 521, 80, 22);
 		getContentPane().add(lblQuotes);
 		
-		list_2 = new JList();
+		list_2 = new JList<Quote>();
 		list_2.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		list_2.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
@@ -179,7 +178,7 @@ public class TaldeaApostatuGUI extends JFrame{
 		btnClose.setBackground(Color.DARK_GRAY);
 		btnClose.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jButtonClose_actionPerformed(e);
+				jButtonClose_actionPerformed();
 				JFrame a = new DestacadosGUI(user);
 				a.setVisible(true);
 			}
@@ -193,7 +192,7 @@ public class TaldeaApostatuGUI extends JFrame{
 		btnApostatu.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnApostatu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JFrame a =new ApustuaEginGUI(new Vector<Event>(),user, (Quote)list_2.getSelectedValue());
+				JFrame a =new ApustuaEginGUI(new Vector<Event>(),user, list_2.getSelectedValue());
 				a.setVisible(true);
 				thisw.setVisible(false);
 			}
@@ -209,7 +208,7 @@ public class TaldeaApostatuGUI extends JFrame{
 		getContentPane().add(lblErrorQuote);
 		
 	}
-	private void jButtonClose_actionPerformed(ActionEvent e) {
+	private void jButtonClose_actionPerformed() {
 		this.setVisible(false);
 	}
 }

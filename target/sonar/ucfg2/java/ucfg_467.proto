@@ -1,0 +1,65 @@
+
+*domain.Apustua#equals(Ljava/lang/Object;)ZT
+J/home/mateo/Documentos/UPV/IS2/Bet22Lite/src/main/java/domain/Apustua.javaY Y("startingBlock*!
+2\
+ \("
+\ \(
+""*s
+3Z Z(\
+Z
+Z Z(
+adomain.Apustua"__id*3
+
+__unknown_file (
+
+ojava.lang.Object*
+2
+1*Ä
+startingBlockY Y( à
+Ö
+X X(
+
+%3"
+__annotate*2
+
+__unknown_file (
+java.lang.Override*3
+
+__unknown_file (
+
+ojava.lang.ObjectU
+S
+Y Y(
+ojava.lang.Object"__annotation*"
+
+__unknown_file (
+
+%3*
+3*¬
+1^	 ^(†ù
+^	 ^( 
+%0java.lang.Integer"4domain.Apustua#getApostuaNumber()Ljava/lang/Integer;*.
+
+__unknown_file (
+domain.Apustua2getApostuaNumber()£†
+^( ^(<
+%1java.lang.Integer"4domain.Apustua#getApostuaNumber()Ljava/lang/Integer;*1
+
+__unknown_file (
+
+adomain.Apustua2getApostuaNumber()’“
+^	 ^(=
+%2boolean"-java.lang.Integer#equals(Ljava/lang/Object;)Z*5
+
+__unknown_file (
+
+%0java.lang.Integer*5
+
+__unknown_file (
+
+%1java.lang.Integer2equals(Ljava/lang/Object;)"
+^ ^(>
+"":!
+Y Y(
+ojava.lang.ObjectB
+domain.ApustuaHP

@@ -1,0 +1,3 @@
+dataAccess.DataAccess#findTransakzioak(Ldomain/Registered;)Ljava/util/List;
+==
+getUsername domain.Registered#getUsername()Ljava/lang/String;
