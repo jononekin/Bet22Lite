@@ -3,6 +3,7 @@ package dataAccess;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -727,10 +728,7 @@ public class DataAccess {
 				}
 			}
 			if (b) {
-				String[] taldeak = description.split("-");
-				Team lokala = new Team(taldeak[0]);
-				Team kanpokoa = new Team(taldeak[1]);
-				Event e = new Event(description, eventDate, lokala, kanpokoa);
+				Event e = createEvent(eventDate,description);
 				e.setSport(spo);
 				spo.addEvent(e);
 				db.persist(e);
@@ -740,6 +738,14 @@ public class DataAccess {
 		}
 		db.getTransaction().commit();
 		return b;
+	}
+	
+	private Event createEvent(Date eventDate, String description) {
+		String[] taldeak = description.split("-");
+		Team lokala = new Team(taldeak[0]);
+		Team kanpokoa = new Team(taldeak[1]);
+		Event e = new Event(description, eventDate, lokala, kanpokoa);
+		return e;
 	}
 
 	public Quote storeQuote(String forecast, Double Quote, Question question) throws QuoteAlreadyExist {
@@ -832,7 +838,7 @@ public class DataAccess {
 			user.addTransaction(t);
 			db.persist(t);
 			db.getTransaction().commit();
-			this.jarraituApustuak(quote, balioa, apustuBikoitzaGalarazi, user, apustuAnitza);
+			this.jarraituApustuak(new JarraituApustuakParameter(quote, balioa, apustuBikoitzaGalarazi, user, apustuAnitza));
 			return true;
 		} else {
 			return false;
@@ -840,22 +846,21 @@ public class DataAccess {
 
 	}
 
-	private void jarraituApustuak(Vector<Quote> quote, Double balioa, Integer apustuBikoitzaGalarazi, Registered user,
-			ApustuAnitza apustuAnitza) {
+	private void jarraituApustuak(JarraituApustuakParameter parameterObject) {
 		Boolean b;
-		for (Jarraitzailea reg : user.getJarraitzaileLista()) {
+		for (Jarraitzailea reg : parameterObject.getUser().getJarraitzaileLista()) {
 			Jarraitzailea erab = db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());
 			b = true;
 			for (ApustuAnitza apu : erab.getNork().getApustuAnitzak()) {
-				if (Objects.equals(apu.getApustuKopia(), apustuAnitza.getApustuKopia())) {
+				if (Objects.equals(apu.getApustuKopia(), parameterObject.getApustuAnitza().getApustuKopia())) {
 					b = false;
 				}
 			}
 			if (Boolean.TRUE.equals(b)) {
-				if (erab.getNork().getDiruLimitea() < balioa) {
-					this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
+				if (erab.getNork().getDiruLimitea() < parameterObject.getBalioa()) {
+					this.ApustuaEgin(erab.getNork(), parameterObject.getQuote(), erab.getNork().getDiruLimitea(), parameterObject.getApustuBikoitzaGalarazi());
 				} else {
-					this.ApustuaEgin(erab.getNork(), quote, balioa, apustuBikoitzaGalarazi);
+					this.ApustuaEgin(erab.getNork(), parameterObject.getQuote(), parameterObject.getBalioa(), parameterObject.getApustuBikoitzaGalarazi());
 				}
 			}
 		}
@@ -1042,22 +1047,12 @@ public class DataAccess {
 	}
 
 	public List<Registered> rankingLortu() {
-		TypedQuery<Registered> Rquery = db.createQuery("SELECT r FROM Registered r", Registered.class);
-		List<Registered> listR = Rquery.getResultList();
-		List<Registered> ema = new ArrayList<Registered>();
-		int i;
-		for (Registered r : listR) {
-			if (ema.isEmpty()) {
-				ema.add(0, r);
-			} else {
-				i = 0;
-				while (i < ema.size() && r.getIrabazitakoa() < ema.get(i).getIrabazitakoa()) {
-					i++;
-				}
-				ema.add(i, r);
-			}
-		}
-		return ema;
+	    TypedQuery<Registered> Rquery = db.createQuery("SELECT r FROM Registered r", Registered.class);
+	    List<Registered> listR = Rquery.getResultList();
+
+	    Collections.sort(listR, (r1, r2) -> Double.compare(r1.getIrabazitakoa(), r2.getIrabazitakoa()));
+
+	    return listR;
 	}
 
 	public List<Event> getEventsAll() {
@@ -1075,27 +1070,29 @@ public class DataAccess {
 		query.setParameter(1, gertaera.getDescription());
 		query.setParameter(2, date);
 		if (query.getResultList().isEmpty()) {
-			b = true;
-			String[] taldeak = gertaera.getDescription().split("-");
-			Team lokala = new Team(taldeak[0]);
-			Team kanpokoa = new Team(taldeak[1]);
-			Event gertKopiatu = new Event(gertaera.getDescription(), date, lokala, kanpokoa);
-			gertKopiatu.setSport(gertaera.getSport());
-			gertaera.getSport().addEvent(gertKopiatu);
-			db.persist(gertKopiatu);
-			for (Question q : gertaera.getQuestions()) {
-				Question que = new Question(q.getQuestion(), q.getBetMinimum(), gertKopiatu);
-				gertKopiatu.listaraGehitu(que);
-				Question galdera = db.find(Question.class, q.getQuestionNumber());
-				db.persist(que);
-				for (Quote k : galdera.getQuotes()) {
-					Quote kuo = new Quote(k.getQuote(), k.getForecast(), que);
-					que.listaraGehitu(kuo);
-					db.persist(kuo);
-				}
-			}
+			b = cloneEvent(date, gertaera);
 		}
 		db.getTransaction().commit();
+		return b;
+	}
+
+	private Boolean cloneEvent(Date date, Event gertaera) {
+		Boolean b = true;
+		Event gertKopiatu = createEvent(date,gertaera.getDescription());
+		gertKopiatu.setSport(gertaera.getSport());
+		gertaera.getSport().addEvent(gertKopiatu);
+		db.persist(gertKopiatu);
+		for (Question q : gertaera.getQuestions()) {
+			Question que = new Question(q.getQuestion(), q.getBetMinimum(), gertKopiatu);
+			gertKopiatu.listaraGehitu(que);
+			Question galdera = db.find(Question.class, q.getQuestionNumber());
+			db.persist(que);
+			for (Quote k : galdera.getQuotes()) {
+				Quote kuo = new Quote(k.getQuote(), k.getForecast(), que);
+				que.listaraGehitu(kuo);
+				db.persist(kuo);
+			}
+		}
 		return b;
 	}
 
